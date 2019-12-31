@@ -1,0 +1,10 @@
+{
+  "final_workflow_outputs_dir" : "wdl_final",
+  "final_workflow_log_dir" : "log_dir",
+  "backend" : "PBS",
+  "default_runtime_attributes": {
+    "cpu" : 1,
+    "memory": "4 GB",
+    "conda_env" : "encode-atac-seq-pipeline"
+  }    
+}

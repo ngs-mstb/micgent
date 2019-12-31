@@ -1,0 +1,12 @@
+primer_literals: [AGTGTTCAAYTTYGTWCCYTG, YTACCATTCAAGCAATGACCTC]    
+assembly_cov: 1000000
+assembly_cov_min: 10
+assembler: plugin 
+plugin_asm_options: 'python -m MICGENT.ariba_asm_plugin asm-for-skewed-coverage --extra-args "{deterministic: true}"'
+filter_asm_args: '{policy: default, ctg_len_min: 2300, ctg_cov_ratio_min: 0.05, ctg_cov_min: 30, ctg_ref_bases_ratio_min: 0.8 }'
+sor_sfx_target: F
+sor_sfx_version: 1
+debug: true
+cut_to_ref: true
+one_seq_per_contig: true
+deterministic: true

@@ -1,0 +1,9 @@
+{
+  "final_workflow_outputs_dir" : "wdl_final",
+  "backend" : "PBS",
+  "default_runtime_attributes": {
+      "cpu" : 1,
+      "conda_env" : "mtg16s"
+  }    
+}
+

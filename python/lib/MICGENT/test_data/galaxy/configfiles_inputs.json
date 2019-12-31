@@ -1,0 +1,66 @@
+
+{
+"cond_preset":
+
+{
+"section_trim":
+{
+
+"clumpify": false,
+ "qc_samplerate": 0.1,
+ "primer_literals": "",
+ "read_minlen": 50,
+ "filter_spikes": false
+}
+,
+ "section_radar_sfx":
+{
+
+"radar_sfx_target": "",
+ "radar_sfx_version": null
+}
+,
+ "cond_assembly_policy":
+{
+
+"section_adv":
+{
+
+"assembly_cov": 100,
+ "assembly_cov_min": 10,
+ "cond_assembler":
+{
+
+"assembler": "fermilite"
+}
+,
+ "section_adv_ariba":
+{
+"nucmer_breaklen": 200,
+ "gene_nt_extend": 30,
+ "nucmer_min_id": 90,
+ "nucmer_min_len": 20
+}
+
+}
+,
+ "assembly_policy": "wgs_fermilite"
+}
+,
+ "section_out_filt":
+{
+"ctg_len_min": 1,
+ "pad_assembled": 200,
+ "ctg_ref_bases_min": 1,
+ "ctg_cov_min": 20,
+ "one_seq_per_contig": false,
+ "ctg_cov_ratio_min": 0.05,
+ "cut_to_ref": false,
+ "pad_gene": 200,
+ "ctg_ref_bases_ratio_min": 0.75
+}
+,
+ "preset": "val_sa_at"
+}
+
+}

@@ -1,0 +1,13 @@
+fields:
+  - name: files1_1
+    type: File[]
+  - name: files1_2
+    type: File[]
+  - name: files2_1
+    type: File[]
+  - name: files2_2
+    type: File[]
+  - name: SampleID
+    type: string
+name: sample_replicated_reads
+type: record

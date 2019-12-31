@@ -1,0 +1,7 @@
+x: '17'
+y: p
+config:
+  my_g:
+    y: p
+    out: arg_parsing_test_cli_out.yaml
+out: arg_parsing_test_cli_out.yaml

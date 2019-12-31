@@ -1,0 +1,4 @@
+ref_name	cluster	seq_type	seq_id	hit_id
+CP000255_SAUSA300_1058_REF	cluster	match	CP000255_SAUSA300_1058_REF.1.960.cluster.l15.c4.ctg.1.479.1437.-.complete	0
+CP000255_SAUSA300_1058_REF	cluster	gene	cluster.l15.c4.ctg.1.1310-354.HAS_STOP.None.None	0
+	cluster	asm	cluster.l15.c4.ctg.1	

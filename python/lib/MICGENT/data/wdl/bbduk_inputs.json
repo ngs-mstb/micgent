@@ -1,0 +1,6 @@
+{
+  "bbduk_cut_16s_primers.sampleSheetFile": "sample_sheet.csv",
+  "bbduk_cut_16s_primers.bbduk_threads": 8,
+  "bbduk_cut_16s_primers.primer_literals": ["GTGCCAGCMGCCGCGGTAA","GGACTACHVGGGTWTCTAAT"],
+  "bbduk_cut_16s_primers.adapter_file": "bbduk_adapters.fa"
+}

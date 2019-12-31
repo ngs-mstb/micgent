@@ -1,0 +1,9 @@
+{
+    "manifestAll": "manifest_out_all.tsv",
+    "manifestFinal": "manifest_out.tsv",
+    "manifestSum": "manifest_out_sum.tsv",    
+    "manifestDict": "manifest_out_dict.tsv",        
+    "multiqc": { "html": "multiqc.html", "data": "multiqc_data.zip" },
+    "browserConf": "geno_browser_contigs.json",
+    "samplesDir": "samples"
+}

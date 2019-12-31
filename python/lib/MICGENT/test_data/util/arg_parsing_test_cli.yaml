@@ -1,0 +1,3 @@
+my_g:
+    y: p
+    out: arg_parsing_test_cli_out.yaml

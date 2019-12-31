@@ -1,0 +1,4 @@
+ref_name	cluster	seq_type	seq_id	hit_id
+B01	cluster_1	match	B01.1.2503.cluster_1.l100.c50.ctg.1.16.2518.+.complete	0
+	cluster_1	asm	cluster_1.l100.c50.ctg.1	
+	cluster_1	asm	cluster_1.l100.c50.ctg.2	

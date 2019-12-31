@@ -1,0 +1,9 @@
+#!/bin/sh
+this_dir=$(cd $(dirname $0) && pwd)
+MIDAS_INST_DIR="$this_dir"
+MIDAS_SRC_DIR="$MIDAS_INST_DIR/MIDAS"
+export PYTHONPATH=$PYTHONPATH:"$MIDAS_SRC_DIR"
+export PATH=$PATH:"$MIDAS_SRC_DIR"/scripts
+export MIDAS_DB="$MIDAS_INST_DIR/midas_db_v1.2"
+exec "$@"
+

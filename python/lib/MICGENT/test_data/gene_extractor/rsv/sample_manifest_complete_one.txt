@@ -1,0 +1,2 @@
+SampleID	file1	file2
+SMA1526987	SMA1526987_R1_.fastq.gz	SMA1526987_R2_.fastq.gz

@@ -1,0 +1,9 @@
+- type: enum
+  name: ktrim
+  symbols: [ 'r', 'l', 'f']
+- type: enum
+  name: side_set
+  symbols: [ 'r', 'l', 'rl' ]
+- type: enum
+  name: flag
+  symbols: [ 'f', 't' ]

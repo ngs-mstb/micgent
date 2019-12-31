@@ -1,0 +1,9 @@
+name: sample_reads
+type: record
+fields:
+  - name: file1
+    type: File
+  - name: file2
+    type: File
+  - name: SampleID
+    type: string

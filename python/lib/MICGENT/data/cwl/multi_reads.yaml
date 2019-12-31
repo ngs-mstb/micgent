@@ -1,0 +1,9 @@
+fields:
+  - name: files1
+    type: File[]
+  - name: files2
+    type: File[]
+  - name: SampleID
+    type: string
+name: sample_multi_reads
+type: record

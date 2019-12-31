@@ -1,0 +1,6 @@
+#!/bin/sh
+##Converts reference sequence ID in order to make it compatible with Ariba:
+##From: NC_002516_psL_A-O_pslO
+##To: pslO_NC_002516_psL_A-O 
+python -m MICGENT.converters cat-lines --files '*.fasta' | seqkit replace -p '(\S+)_(\S+)' -r '_'
+

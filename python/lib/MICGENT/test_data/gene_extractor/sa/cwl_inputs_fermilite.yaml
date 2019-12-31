@@ -1,0 +1,9 @@
+assembly_policy: wgs_fermilite
+assembly_cov: 100
+assembly_cov_min: 10
+filter_asm_args: '{policy: default, ctg_len_min: 800, ctg_cov_ratio_min: 0.05, ctg_cov_min: 20, ctg_ref_bases_min: 900, ctg_ref_bases_ratio_min: 0.8}'
+sor_sfx_target: HA
+sor_sfx_version: 1
+debug: true
+cut_to_ref: true
+deterministic: true

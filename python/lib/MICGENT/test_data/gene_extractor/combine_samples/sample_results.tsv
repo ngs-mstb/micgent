@@ -1,0 +1,3 @@
+report	sequence	status
+1_report_out.tsv	1_seq_out.fasta	1_status_out.tsv
+2_report_out.tsv	2_seq_out.fasta	2_status_out.tsv

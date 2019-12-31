@@ -1,0 +1,13 @@
+{% extends "browser_base.html" %}
+{% block browser_title %}Assembly for sample {{ sample_id }}{% endblock browser_title %}
+{% block browser_body %}
+
+<h1 id="title_geno_browser">Genome Browser View</h1>
+<div id="descr_geno_browser">Individual reads mapped to the selected reference</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+     var asmBrowser = new micgent.AsmSampleBrowser("body","{{ configFile }}");
+});
+</script>
+
+{% endblock browser_body %}

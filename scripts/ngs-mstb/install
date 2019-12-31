@@ -1,0 +1,9 @@
+#!/bin/sh
+set -ex
+this_dir=$(cd "$(dirname $0)" && pwd)
+conda env create -n ngs-mstb --file $this_dir/ngs-mstb-env.txt
+source activate ngs-mstb
+pip install -e "$this_dir/../../python"
+pip install multiqc
+
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+##latest pysam and samtools need shared lib for bzip2 2.0,
+##which is only available from conda-forge - below is the
+##right order to channels
+set -ex
+conda install -c conda-forge -c bioconda samtools bzip2 pysam bowtie2
+pushd MIDAS/bin
+rm -rf Linux
+ln -s $(dirname $(which samtools)) Linux
+

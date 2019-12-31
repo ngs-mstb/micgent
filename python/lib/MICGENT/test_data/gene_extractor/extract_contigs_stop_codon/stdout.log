@@ -1,0 +1,84 @@
+cluster detected 8 threads available to it
+## Map contigs with Minimap2
+## Map contigs with Minimap2
+## Mapping and running Pilon on the assembly for cluster cluster
+## Map reads
+Note: This script is designed to run with the amount of memory detected by BBMap.
+      If Samtools crashes, please ensure you are running on the same platform as BBMap,
+      or reduce Samtools' memory setting (the -m flag).
+Note: Please ignore any warnings about 'EOF marker is absent'; this is a bug in samtools that occurs when using piped input.
+## Use Pilon to polish reference with mapped reads
+Pilon version 1.22-4-gab1ccd3 Tue Mar 6 20:02:27 2018 -0500
+Genome: /Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/assembly.fa
+Fixing snps, gaps
+Input genome size: 1790
+Scanning BAMs
+/Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/mpl_asm/asm_sorted.bam: 762 reads, 0 filtered, 686 mapped, 652 proper, 0 stray, FR 98% 378+/-76, max 10000 frags
+Processing cluster.l15.c4.ctg.1:1-1790
+frags /Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/mpl_asm/asm_sorted.bam: coverage 84
+Total Reads: 720, Coverage: 84, minDepth: 5
+Confirmed 1661 of 1790 bases (92.79%)
+Corrected 0 snps; 0 ambiguous bases; found 0 small insertions totaling 0 bases, 0 small deletions totaling 0 bases
+cluster.l15.c4.ctg.1:1-1790 log:
+Finished processing cluster.l15.c4.ctg.1:1-1790
+Writing cluster.l15.c4.ctg.1:1-1790 changes to ./asm..changes
+Writing updated cluster.l15.c4.ctg.1_pilon to ./asm..fasta
+Mean frags coverage: 84
+Mean total coverage: 84
+Creating Pilon track in file ./asm.Pilon.bed
+Creating Changes track in file ./asm.Changes.wig
+Creating Unconfirmed track in file ./asm.Unconfirmed.wig
+Creating Copy Number track in file ./asm.CopyNumber.wig
+Creating Coverage track in file ./asm.Coverage.wig
+Creating Bad Coverage track in file ./asm.BadCoverage.wig
+Creating Pct Bad track in file ./asm.PctBad.wig
+Creating Delta Coverage track in file ./asm.DeltaCoverage.wig
+Creating Dip Coverage track in file ./asm.DipCoverage.wig
+Creating Physical Coverage track in file ./asm.PhysicalCoverage.wig
+Creating Clipped Alignments track in file ./asm.ClippedAlignments.wig
+Creating Weighted Qual track in file ./asm.WeightedQual.wig
+Creating Weighted MQ track in file ./asm.WeightedMq.wig
+Creating GC track in file ./asm.GC.wig
+## Mapping and running Pilon on the reference for cluster cluster
+## Map reads
+Note: This script is designed to run with the amount of memory detected by BBMap.
+      If Samtools crashes, please ensure you are running on the same platform as BBMap,
+      or reduce Samtools' memory setting (the -m flag).
+Note: Please ignore any warnings about 'EOF marker is absent'; this is a bug in samtools that occurs when using piped input.
+## Use Pilon to polish reference with mapped reads
+Pilon version 1.22-4-gab1ccd3 Tue Mar 6 20:02:27 2018 -0500
+Genome: /Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/reference.fa
+Fixing snps, gaps
+Input genome size: 960
+Scanning BAMs
+/Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/mpl_ref/asm_sorted.bam: 762 reads, 0 filtered, 516 mapped, 444 proper, 0 stray, FR 97% 354+/-87, max 10000 frags
+Processing CP000255_SAUSA300_1058_REF:1-960
+frags /Xxx/xxx/micgent/python/test_run/run.test.a4ff9k56.tmp/ariba_stop_codon_sa/wd/e/c/out_tmpdirk5Cr0j/post_asm/clusters/cluster/mpl_ref/asm_sorted.bam: coverage 101
+Total Reads: 588, Coverage: 101, minDepth: 5
+Confirmed 912 of 960 bases (95.00%)
+Corrected 47 snps; 0 ambiguous bases; found 0 small insertions totaling 0 bases, 1 small deletions totaling 1 bases
+CP000255_SAUSA300_1058_REF:1-960 log:
+Finished processing CP000255_SAUSA300_1058_REF:1-960
+Writing CP000255_SAUSA300_1058_REF:1-960 changes to ./asm..changes
+Writing updated CP000255_SAUSA300_1058_REF_pilon to ./asm..fasta
+Mean frags coverage: 101
+Mean total coverage: 101
+Creating Pilon track in file ./asm.Pilon.bed
+Creating Changes track in file ./asm.Changes.wig
+Creating Unconfirmed track in file ./asm.Unconfirmed.wig
+Creating Copy Number track in file ./asm.CopyNumber.wig
+Creating Coverage track in file ./asm.Coverage.wig
+Creating Bad Coverage track in file ./asm.BadCoverage.wig
+Creating Pct Bad track in file ./asm.PctBad.wig
+Creating Delta Coverage track in file ./asm.DeltaCoverage.wig
+Creating Dip Coverage track in file ./asm.DipCoverage.wig
+Creating Physical Coverage track in file ./asm.PhysicalCoverage.wig
+Creating Clipped Alignments track in file ./asm.ClippedAlignments.wig
+Creating Weighted Qual track in file ./asm.WeightedQual.wig
+Creating Weighted MQ track in file ./asm.WeightedMq.wig
+Creating GC track in file ./asm.GC.wig
+## Map contigs with Minimap2
+## Done mapping to contigs and to the reference assembler for cluster cluster
+## Generated Web pages for the reference assembler for cluster cluster
+xxx.tar
+xxx.tar

@@ -1,0 +1,7 @@
+
+#bgSelectDiv{
+    position:absolute;
+    left:0;
+    bottom:5px;
+    z-index:1200;
+}

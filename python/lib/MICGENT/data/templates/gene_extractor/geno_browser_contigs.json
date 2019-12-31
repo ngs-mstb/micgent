@@ -1,0 +1,25 @@
+{ "title" : "Final assembly contigs from all samples",
+  "igv": {
+    "reference": {
+      "id": "ref",
+      "fastaURL": "ref_common.fasta"
+    },
+    {% if locus %}
+    "locus": "{{ locus }}",
+    {% endif %}
+    "tracks": [
+      {
+        "name": "Contigs",
+        "id": "ID_Contigs",
+        "url": "seq_out.fasta.bam",
+        "indexed": true,
+        "samplingDepth": 50000,
+        "autoHeight": true,
+        "maxHeight":1000,
+        "colorBy": "strand",
+        "alignmentRowHeight": 10,
+        "onClick":"contigsOnClick"
+      }
+    ]
+  }
+}

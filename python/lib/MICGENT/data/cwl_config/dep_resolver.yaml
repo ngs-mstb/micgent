@@ -1,0 +1,2 @@
+- type: galaxy_packages
+  base_path: /home/xxx/work/micgent/python/lib/MICGENT/data/cwl_config/deps

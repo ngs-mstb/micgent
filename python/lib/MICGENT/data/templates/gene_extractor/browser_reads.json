@@ -1,0 +1,66 @@
+{ "title" : "{{ 'Mapping to reference' if target=='ref' else 'Mapping to assembly' }}",
+  "descr" : 
+  {% if target=='ref' %}
+  "Assembly contigs and individual reads are mapped to the best matching reference. The reference itself is polished (edited) with Pilon and then also mapped.",
+  {% else %}
+  "The best matching reference and individual reads are mapped to the assembly contigs. You can zoom in to see individual base symbols of the contigs including the ambiguous bases if they are present. The count of alleles reported by the browser might be slightly off the count that was used when generating the ambiguous bases. Warning: sometimes the genome browser does not populate the popup dialog with all contig names. You might have to type the contig name from the Assemblies table in the location field and hit Enter.",
+  {% endif %}
+  "igv": {
+    "reference": {
+      "id": "ref",
+      "fastaURL": "{{ 'reference.fa' if target=='ref' else 'assembly.fa' }}"
+    },
+    {% if locus %}
+    "locus": "{{ locus }}",
+    {% endif %}
+    "tracks": [
+      {% if target=='ref' %}
+      {
+        "name": "Edited ref to ref",
+        "height": 20,
+        "url": "asm_ref_to_ref.bam",
+        "indexed": true
+      },
+      {% endif %}
+      {
+        "name": "{{ 'Asm to ref' if target=='ref' else 'Ref to asm' }}",
+        "url": "{{ 'asm_to_ref.bam' if target=='ref' else 'ref_to_asm.bam' }}",
+        "height": 100,
+        "indexed": true
+      },
+      {
+        "name": "<a href=\"mpl_{{ target }}/asm_sorted.bam\">Reads</a>",
+        "id": "ID_Reads",
+        "url": "mpl_{{ target }}/asm_sorted.bam",
+        "indexed": true,
+        "samplingDepth": 300,
+        "height": 800,
+        "colorBy": "strand",
+        "alignmentRowHeight": 10
+      },
+      {
+        "name": "Clipped alignments",
+        "url": "mpl_{{ target }}/asm_pilon/asm.ClippedAlignments.wig",
+        "indexed": false
+      },
+      {
+        "name": "Pilon Unconfirmed",
+        "url": "mpl_{{ target }}/asm_pilon/asm.Unconfirmed.wig",
+        "indexed": false
+      },
+      {
+        "name": "Pilon edits",
+        "url": "mpl_{{ target }}/asm_pilon/asm.Changes.wig",
+        "indexed": false
+      },
+      {
+        "name": "Pilon Notes",
+        "type": "annotation",
+        "format": "bed",
+        "sourceType": "file",
+        "url": "mpl_{{ target }}/asm_pilon/asm.Pilon.bed",
+        "indexed": false
+      }
+    ]
+  }
+}

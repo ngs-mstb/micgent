@@ -1,0 +1,13 @@
+{% extends "browser_base.html" %}
+{% block browser_title %}All samples{% endblock browser_title %}
+{% block browser_body %}
+
+<h1 id="title_geno_browser">Genome Browser View of Contigs</h1>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+     var asmBrowser = new micgent.AsmBrowser("body","{{ configFile }}");
+    });
+</script>
+
+{% endblock browser_body %}

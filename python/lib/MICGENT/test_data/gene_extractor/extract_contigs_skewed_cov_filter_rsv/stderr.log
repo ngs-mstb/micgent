@@ -1,0 +1,240 @@
+18-06-20 23:07:35 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['samtools', 'faidx', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa']
+18-06-20 23:07:35 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['samtools', 'faidx', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa']
+[M::mm_idx_gen::0.003*0.91] collected minimizers
+[M::mm_idx_gen::0.004*1.36] sorted minimizers
+[M::main::0.004*1.35] loaded/built the index for 2 target sequence(s)
+[M::mm_mapopt_update::0.005*1.33] mid_occ = 90
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 2
+[M::mm_idx_stat::0.005*1.31] distinct minimizers: 218 (99.54% are singletons); average occurrences: 1.404; average spacing: 8.667
+[M::worker_pipeline::0.007*1.14] mapped 1 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa
+[M::main] Real time: 0.007 sec; CPU: 0.008 sec
+18-06-20 23:07:35 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa.bwa.tmp -o /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/ref_to_asm.bam -) && \\\n        samtools index /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/ref_to_asm.bam && \\\n        rm -rf /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa.bwa.tmp\n        ']
+[M::mm_idx_gen::0.003*1.32] collected minimizers
+[M::mm_idx_gen::0.004*1.75] sorted minimizers
+[M::main::0.004*1.73] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.004*1.69] mid_occ = 3
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.004*1.67] distinct minimizers: 250 (99.60% are singletons); average occurrences: 1.004; average spacing: 9.972
+[M::worker_pipeline::0.007*1.54] mapped 2 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa
+[M::main] Real time: 0.007 sec; CPU: 0.010 sec
+18-06-20 23:07:35 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa.bwa.tmp -o /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/asm_to_ref.bam -) && \\\n        samtools index /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/asm_to_ref.bam && \\\n        rm -rf /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa.bwa.tmp\n        ']
+java -Djava.library.path=/xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/jni/ -ea -Xmx4096m -cp /xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx4096m overwrite=true in=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq in2=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_asm/asm.sam ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa nodisk sampleseed=10 deterministic ambig=random minid=0.96 idfilter=0.96 inserttag idtag basecov=basecov.txt threads=1 bamscript=bbmap_bam.sh
+Picked up _JAVA_OPTIONS: -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx4096m, overwrite=true, in=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq, in2=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq, out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_asm/asm.sam, ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa, nodisk, sampleseed=10, deterministic, ambig=random, minid=0.96, idfilter=0.96, inserttag, idtag, basecov=basecov.txt, threads=1, bamscript=bbmap_bam.sh]
+Version 38.06
+
+Set threads to 1
+Choosing a site randomly for ambiguous mappings.
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.926
+Found samtools 1.7
+Executing dna.FastaToChromArrays2 [/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=false, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=true]
+
+Set genScaffoldInfo=true
+Set genome to 1
+
+Loaded Reference:	0.004 seconds.
+Loading index for chunk 1-1, build 1
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	0.232 seconds.
+Analyzed Index:   	5.006 seconds.
+Started output stream:	0.063 seconds.
+Cleared Memory:    	0.285 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 1 mapping thread.
+Detecting finished threads: 0
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	16000
+Minimum Score Ratio:  	0.92648
+Mapping Mode:         	normal
+Reads Used:           	1576	(218103 bases)
+
+Mapping:          	3.471 seconds.
+Reads/sec:       	454.02
+kBases/sec:      	62.83
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 90.2284% 	      711 	 88.7608% 	      193590
+bad pairs:       	  0.0000% 	        0 	  0.0000% 	           0
+insert size avg: 	  158.29
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 93.7817% 	      739 	 94.0907% 	      102923
+unambiguous:     	 93.7817% 	      739 	 94.0907% 	      102923
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 32.1066% 	      253 	 23.7350% 	       25963
+semiperfect site:	 33.3756% 	      263 	 25.5149% 	       27910
+rescued:         	  0.0000% 	        0
+
+Match Rate:      	      NA 	       NA 	 98.0854% 	      101488
+Error Rate:      	 64.4114% 	      476 	  1.8914% 	        1957
+Sub Rate:        	 62.9229% 	      465 	  1.0834% 	        1121
+Del Rate:        	  0.2706% 	        2 	  0.5277% 	         546
+Ins Rate:        	 20.0271% 	      148 	  0.2803% 	         290
+N Rate:          	  2.8417% 	       21 	  0.0232% 	          24
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 91.1168% 	      718 	 90.0971% 	       97950
+unambiguous:     	 91.1168% 	      718 	 90.0971% 	       97950
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 30.9645% 	      244 	 22.7207% 	       24701
+semiperfect site:	 32.2335% 	      254 	 24.5107% 	       26647
+rescued:         	 23.0964% 	      182
+
+Match Rate:      	      NA 	       NA 	 98.5952% 	       96574
+Error Rate:      	 64.6240% 	      464 	  1.3885% 	        1360
+Sub Rate:        	 63.2312% 	      454 	  1.0965% 	        1074
+Del Rate:        	  0.0000% 	        0 	  0.0000% 	           0
+Ins Rate:        	 20.3343% 	      146 	  0.2920% 	         286
+N Rate:          	  2.2284% 	       16 	  0.0163% 	          16
+
+Reads:                               	1576
+Mapped reads:                        	1457
+Mapped bases:                        	200873
+Ref scaffolds:                       	2
+Ref bases:                           	2652
+
+Percent mapped:                      	92.449
+Percent proper pairs:                	90.228
+Average coverage:                    	75.744
+Standard deviation:                    	200.755
+Percent scaffolds with any coverage: 	50.00
+Percent of reference bases covered:  	95.17
+
+Total time:     	9.410 seconds.
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+18-06-20 23:07:45 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', "set -euo pipefail; bbmap.sh -Xmx4096m overwrite=true in='/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq' in2='/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq' out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_asm/asm.sam ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa nodisk sampleseed=10 deterministic ambig=random minid=0.96 idfilter=0.96 inserttag idtag basecov=basecov.txt threads=1 bamscript=bbmap_bam.sh && sh bbmap_bam.sh"]
+Picked up _JAVA_OPTIONS: -Xmx4096m -Xms4096m -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+18-06-20 23:07:46 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['pilon', '--threads', '1', '--genome', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/assembly.fa', '--bam', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_asm/asm_sorted.bam', '--outdir', '.', '--output', 'asm.', '--changes', '--tracks', '--iupac', '--mindepth', '5', '--fix', 'snps,gaps', '--iupacminfreq', '0.7', '--iupacminqualsum', '150']
+java -Djava.library.path=/xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/jni/ -ea -Xmx4096m -cp /xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx4096m overwrite=true in=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq in2=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm.sam ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa nodisk sampleseed=10 deterministic ambig=random inserttag idtag local basecov=basecov.txt threads=1 bamscript=bbmap_bam.sh
+Picked up _JAVA_OPTIONS: -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx4096m, overwrite=true, in=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq, in2=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq, out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm.sam, ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa, nodisk, sampleseed=10, deterministic, ambig=random, inserttag, idtag, local, basecov=basecov.txt, threads=1, bamscript=bbmap_bam.sh]
+Version 38.06
+
+Set threads to 1
+Choosing a site randomly for ambiguous mappings.
+Found samtools 1.7
+Executing dna.FastaToChromArrays2 [/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=false, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=true]
+
+Set genScaffoldInfo=true
+Set genome to 1
+
+Loaded Reference:	0.003 seconds.
+Loading index for chunk 1-1, build 1
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	0.198 seconds.
+Analyzed Index:   	2.765 seconds.
+Started output stream:	0.021 seconds.
+Cleared Memory:    	0.232 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 1 mapping thread.
+Detecting finished threads: 0
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	16000
+Minimum Score Ratio:  	0.56
+Mapping Mode:         	normal
+Reads Used:           	1576	(218103 bases)
+
+Mapping:          	2.183 seconds.
+Reads/sec:       	721.87
+kBases/sec:      	99.90
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 96.3198% 	      759 	 94.0501% 	      205126
+bad pairs:       	  0.2538% 	        2 	  0.4585% 	        1000
+insert size avg: 	  158.65
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 99.4924% 	      784 	 99.2357% 	      108551
+unambiguous:     	 99.4924% 	      784 	 99.2357% 	      108551
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  0.6345% 	        5 	  0.2669% 	         292
+semiperfect site:	 10.5330% 	       83 	  4.5188% 	        4943
+rescued:         	  0.5076% 	        4
+
+Match Rate:      	      NA 	       NA 	 89.4121% 	       97545
+Error Rate:      	 88.5204% 	      694 	  5.2046% 	        5678
+Sub Rate:        	 88.5204% 	      694 	  4.7023% 	        5130
+Del Rate:        	  0.1276% 	        1 	  0.4996% 	         545
+Ins Rate:        	  0.3827% 	        3 	  0.0027% 	           3
+N Rate:          	 71.4286% 	      560 	  5.3833% 	        5873
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 96.8274% 	      763 	 95.0725% 	      103359
+unambiguous:     	 96.8274% 	      763 	 95.0725% 	      103359
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  0.6345% 	        5 	  0.2686% 	         292
+semiperfect site:	 10.4061% 	       82 	  4.4842% 	        4875
+rescued:         	  7.8680% 	       62
+
+Match Rate:      	      NA 	       NA 	 89.7533% 	       92769
+Error Rate:      	 88.3355% 	      674 	  4.8046% 	        4966
+Sub Rate:        	 88.3355% 	      674 	  4.8017% 	        4963
+Del Rate:        	  0.1311% 	        1 	  0.0010% 	           1
+Ins Rate:        	  0.2621% 	        2 	  0.0019% 	           2
+N Rate:          	 71.9528% 	      549 	  5.4421% 	        5625
+
+Reads:                               	1576
+Mapped reads:                        	1547
+Mapped bases:                        	211910
+Ref scaffolds:                       	1
+Ref bases:                           	2503
+
+Percent mapped:                      	98.160
+Percent proper pairs:                	96.320
+Average coverage:                    	84.662
+Standard deviation:                    	215.030
+Percent scaffolds with any coverage: 	100.00
+Percent of reference bases covered:  	100.00
+
+Total time:     	5.606 seconds.
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+18-06-20 23:07:52 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', "set -euo pipefail; bbmap.sh -Xmx4096m overwrite=true in='/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_1.fq' in2='/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/out/clusters/cluster_1/reads_2.fq' out=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm.sam ref=/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa nodisk sampleseed=10 deterministic ambig=random inserttag idtag local basecov=basecov.txt threads=1 bamscript=bbmap_bam.sh && sh bbmap_bam.sh"]
+Picked up _JAVA_OPTIONS: -Xmx4096m -Xms4096m -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+18-06-20 23:07:53 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['pilon', '--threads', '1', '--genome', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa', '--bam', '/xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm_sorted.bam', '--outdir', '.', '--output', 'asm.', '--changes', '--tracks', '--iupac', '--mindepth', '5', '--fix', 'snps,gaps']
+[M::mm_idx_gen::0.003*1.39] collected minimizers
+[M::mm_idx_gen::0.004*1.71] sorted minimizers
+[M::main::0.004*1.69] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.004*1.66] mid_occ = 3
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.004*1.64] distinct minimizers: 250 (99.60% are singletons); average occurrences: 1.004; average spacing: 9.972
+[M::worker_pipeline::0.007*1.34] mapped 1 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm_pilon/asm..fasta
+[M::main] Real time: 0.007 sec; CPU: 0.009 sec
+18-06-20 23:07:53 [ INFO] pid:49716	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/reference.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm_pilon/asm..fasta \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm_pilon/asm..fasta.bwa.tmp -o /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/asm_ref_to_ref.bam -) && \\\n        samtools index /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/asm_ref_to_ref.bam && \\\n        rm -rf /xxxscr/xxx/test_run/run.test.f0a7qtis.tmp/ariba_run_skewed_cov_filter_rsv/wd/3/b/out_tmpdirjNGuVN/post_asm/clusters/cluster_1/mpl_ref/asm_pilon/asm..fasta.bwa.tmp\n        ']

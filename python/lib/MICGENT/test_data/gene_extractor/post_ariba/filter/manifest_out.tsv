@@ -1,0 +1,3 @@
+SampleID	file1	file2	SeqID	SeqStatus	Asm_ContigSeqID	Asm_ref_name	Asm_gene	Asm_var_only	Asm_flag	Asm_reads	Asm_cluster	Asm_ref_len	Asm_ref_base_assembled	Asm_pc_ident	Asm_ctg	Asm_seq_len	Asm_ctg_cov	Asm_ariba_ref_name
+SASMA1927338_1	SMA1927338_S1_L001_R1_001.fastq.gz	SMA1927338_S1_L001_R2_001.fastq.gz	SASMA1927338_1_1	asm	cluster.l15.c17.ctg.1	CP000255_SAUSA300_1058_REF	1	0	assembled	1454	cluster	960	794	100.0	cluster.l15.c17.ctg.1	1000	234.6	CP000255_SAUSA300_1058_REF
+SASMA1927338_1	SMA1927338_S1_L001_R1_001.fastq.gz	SMA1927338_S1_L001_R2_001.fastq.gz	SASMA1927338_1_2	asm	cluster.l15.c17.ctg.2	CP000255_SAUSA300_1058_REF	1	0	assembled	1454	cluster	960	166	100.0	cluster.l15.c17.ctg.2	597	119.3	CP000255_SAUSA300_1058_REF

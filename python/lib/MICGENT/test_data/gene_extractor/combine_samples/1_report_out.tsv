@@ -1,0 +1,3 @@
+SampleID	SeqID	Asm_ContigSeqID	Asm_ref_name	Asm_gene	Asm_var_only	flag	Asm_reads	Asm_cluster	Asm_ref_len	Asm_ref_base_assembled	Asm_pc_ident	Asm_ctg	Asm_ctg_len	Asm_ctg_cov	Asm_seq_len	Asm_ariba_ref_name	Asm_SeqStatus
+SMA1828869	SMA1828869_1	cluster.l15.c17.ctg.1.649-1608.GENE_FOUND.0.0	CP000255_SAUSA300_1058_REF	1	0	527	1214	cluster	960	960	99.48	cluster.l15.c17.ctg.1	2255	112	1360	CP000255_SAUSA300_1058_REF	gene
+SMA1828869	SMA1828869_2	cluster.l15.c17.ctg.2	CP000255_SAUSA300_1058_REF	1	0	527	1214	cluster	960	960	94.27	cluster.l15.c17.ctg.2	2123	25	2123	CP000255_SAUSA300_1058_REF	asm

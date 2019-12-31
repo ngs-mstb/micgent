@@ -1,0 +1,16 @@
+bowtie2
+bzip2
+cd-hit
+cmake
+curl
+mummer
+ncurses
+nose
+perl
+python>=3.5
+spades
+sqlite
+tbb
+tk
+pysam # Ariba's setup.py dependency, but fails to build with pip on Mac OS
+

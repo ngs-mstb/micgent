@@ -1,0 +1,231 @@
+- SampleID: AT01
+  files1_1:
+  - path: xxx-01a_S1_R1_001.fastq.gz
+    class: File
+  - path: xxx-01a_S1_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-01a_S1_R2_001.fastq.gz
+    class: File
+  - path: xxx-01a_S1_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-01b_S1_R1_001.fastq.gz
+    class: File
+  - path: xxx-01b_S1_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-01b_S1_R2_001.fastq.gz
+    class: File
+  - path: xxx-01b_S1_R2_001.fastq.gz
+    class: File
+- SampleID: AT02
+  files1_1:
+  - path: xxx-02a_S2_R1_001.fastq.gz
+    class: File
+  - path: xxx-02a_S2_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-02a_S2_R2_001.fastq.gz
+    class: File
+  - path: xxx-02a_S2_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-02b_S2_R1_001.fastq.gz
+    class: File
+  - path: xxx-02b_S2_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-02b_S2_R2_001.fastq.gz
+    class: File
+  - path: xxx-02b_S2_R2_001.fastq.gz
+    class: File
+- SampleID: AT03
+  files1_1:
+  - path: xxx-03a_S3_R1_001.fastq.gz
+    class: File
+  - path: xxx-03a_S3_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-03a_S3_R2_001.fastq.gz
+    class: File
+  - path: xxx-03a_S3_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-03b_S3_R1_001.fastq.gz
+    class: File
+  - path: xxx-03b_S3_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-03b_S3_R2_001.fastq.gz
+    class: File
+  - path: xxx-03b_S3_R2_001.fastq.gz
+    class: File
+- SampleID: AT04
+  files1_1:
+  - path: xxx-04a_S4_R1_001.fastq.gz
+    class: File
+  - path: xxx-04a_S4_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-04a_S4_R2_001.fastq.gz
+    class: File
+  - path: xxx-04a_S4_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-04b_S4_R1_001.fastq.gz
+    class: File
+  - path: xxx-04b_S4_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-04b_S4_R2_001.fastq.gz
+    class: File
+  - path: xxx-04b_S4_R2_001.fastq.gz
+    class: File
+- SampleID: AT05
+  files1_1:
+  - path: xxx-05a_S5_R1_001.fastq.gz
+    class: File
+  - path: xxx-05a_S5_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-05a_S5_R2_001.fastq.gz
+    class: File
+  - path: xxx-05a_S5_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-05b_S5_R1_001.fastq.gz
+    class: File
+  - path: xxx-05b_S5_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-05b_S5_R2_001.fastq.gz
+    class: File
+  - path: xxx-05b_S5_R2_001.fastq.gz
+    class: File
+- SampleID: AT06
+  files1_1:
+  - path: xxx-06a_S6_R1_001.fastq.gz
+    class: File
+  - path: xxx-06a_S6_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-06a_S6_R2_001.fastq.gz
+    class: File
+  - path: xxx-06a_S6_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-06b_S6_R1_001.fastq.gz
+    class: File
+  - path: xxx-06b_S6_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-06b_S6_R2_001.fastq.gz
+    class: File
+  - path: xxx-06b_S6_R2_001.fastq.gz
+    class: File
+- SampleID: AT07
+  files1_1:
+  - path: xxx-07a_S7_R1_001.fastq.gz
+    class: File
+  - path: xxx-07a_S7_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-07a_S7_R2_001.fastq.gz
+    class: File
+  - path: xxx-07a_S7_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-07b_S7_R1_001.fastq.gz
+    class: File
+  - path: xxx-07b_S7_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-07b_S7_R2_001.fastq.gz
+    class: File
+  - path: xxx-07b_S7_R2_001.fastq.gz
+    class: File
+- SampleID: AT08
+  files1_1:
+  - path: xxx-08a_S8_R1_001.fastq.gz
+    class: File
+  - path: xxx-08a_S8_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-08a_S8_R2_001.fastq.gz
+    class: File
+  - path: xxx-08a_S8_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-08b_S8_R1_001.fastq.gz
+    class: File
+  - path: xxx-08b_S8_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-08b_S8_R2_001.fastq.gz
+    class: File
+  - path: xxx-08b_S8_R2_001.fastq.gz
+    class: File
+- SampleID: AT10
+  files1_1:
+  - path: xxx-10a_S9_R1_001.fastq.gz
+    class: File
+  - path: xxx-10a_S9_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-10a_S9_R2_001.fastq.gz
+    class: File
+  - path: xxx-10a_S9_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-10b_S9_R1_001.fastq.gz
+    class: File
+  - path: xxx-10b_S9_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-10b_S9_R2_001.fastq.gz
+    class: File
+  - path: xxx-10b_S9_R2_001.fastq.gz
+    class: File
+- SampleID: AT11
+  files1_1:
+  - path: xxx-11a_S10_R1_001.fastq.gz
+    class: File
+  - path: xxx-11a_S10_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-11a_S10_R2_001.fastq.gz
+    class: File
+  - path: xxx-11a_S10_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-11b_S10_R1_001.fastq.gz
+    class: File
+  - path: xxx-11b_S10_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-11b_S10_R2_001.fastq.gz
+    class: File
+  - path: xxx-11b_S10_R2_001.fastq.gz
+    class: File
+- SampleID: AT12
+  files1_1:
+  - path: xxx-12a_S11_R1_001.fastq.gz
+    class: File
+  - path: xxx-12a_S11_R1_001.fastq.gz
+    class: File
+  files1_2:
+  - path: xxx-12a_S11_R2_001.fastq.gz
+    class: File
+  - path: xxx-12a_S11_R2_001.fastq.gz
+    class: File
+  files2_1:
+  - path: xxx-12b_S11_R1_001.fastq.gz
+    class: File
+  - path: xxx-12b_S11_R1_001.fastq.gz
+    class: File
+  files2_2:
+  - path: xxx-12b_S11_R2_001.fastq.gz
+    class: File
+  - path: xxx-12b_S11_R2_001.fastq.gz
+    class: File

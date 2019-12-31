@@ -1,0 +1,505 @@
+# Information for re-populating the Galaxy tool form that is needed to re-run a job.
+# The information is saved in a structured YAML format that is both human-readable
+# and machine-parsable. The user can consult the information in this file in order
+# to re-run a particular job through the Galaxy user interface (UI) and reproduce
+# the previous results.
+# 
+# The YAML file is indented to mirror the hierarchy of data and visual layout of the tool in the UI.
+# The top-level keys provide information about the tool and the job that executed the tool,
+# including the user account identified by the email, start and end time of the job, as well
+# as some job metrics collected from the batch job runner.
+# 
+# The input values that were used by the job are contained in the `inputs` key.
+# 
+# The `type` key described the type of the UI elements.
+# The sections in the UI layout correspond to elements with type `section`.
+# Choices made in the conditional elements are defined in `test_param` objects.
+# 
+# Keys such as `label` provide names of the elements that are presented by the UI.
+# Their corresponding `name` keys provide the names of the internal parameters. The
+# exception to that rule is the elements with a type `data_value`. Those describe
+# datasets, with the `name` key containing the dataset descriptive label from the UI,
+# and the `hid` key containing the dataset ID within a given Galaxy history as shown
+# through the UI.
+# 
+# Various other `id` fields are internal Galaxy IDs provided here for provenance information.
+# 
+# This data structure contains all input parameters of the tool, even those that were set to
+# their default values and then hidden from the UI. To reproduce the run, the UI user needs
+# to follow the data parameter hierarchy in this file from top to bottom and set only the 
+# parameters that stay visible in the UI after selection of the previous parameters has been made.
+# 
+# The key `parent_jobs` contains information about all jobs that generated inputs
+# for the top-level job in this file, then about all jobs that generated the inputs
+# of those parent jobs, and so on recursively till the jobs that imported the initial datasets (such
+# as jobs by the `upload1` Get Data tool).
+# 
+# The parent jobs are keyed by their Galaxy job IDs. These job IDs are also referenced within
+# records describing the input datasets of the children jobs. This allows determining
+# which parent job has generated which input dataset. The dataset IDs are also listed within
+# input and output dataset records thus linking parent and child jobs to each other.
+# 
+# To fully reproduce the final outputs from scratch, the user would have to start 
+# rerunning jobs from the bottom of this file, and work their way up to the job
+# at the top.
+panel_section_name: NGS Microbial Sequencing Toolbox
+panel_section_id: ngs_mstb
+name: Extract target genes from NGS datasets
+id: gene_extractor
+version: 1.0.0
+job_id: e289348e49e2bb7a
+history_id: 249c217ff5aa1843
+user_email: xxx@nowhere.com
+create_time: '2018-07-29T20:21:26.387484'
+update_time: '2018-07-29T20:30:58.816176'
+external_id: 1299566
+job_metrics:
+- name: runtime_seconds
+  plugin: core
+  raw_value: '561.0000000'
+  title: Job Runtime (Wall Clock)
+  value: 9 minutes
+- name: galaxy_slots
+  plugin: core
+  raw_value: '1.0000000'
+  title: Cores Allocated
+  value: '1'
+- name: start_epoch
+  plugin: core
+  raw_value: '1532895689.0000000'
+  title: Job Start Time
+  value: '2018-07-29 16:21:29'
+- name: end_epoch
+  plugin: core
+  raw_value: '1532896250.0000000'
+  title: Job End Time
+  value: '2018-07-29 16:30:50'
+inputs:
+- name: cond_preset
+  type: conditional
+  test_param:
+    name: preset
+    type: select
+    label: Parameter Preset
+    value: val_sa_at
+    text_value: Validated Staphylococcus aureus Alpha-Toxin gene
+  inputs:
+  - name: prepareref_tgz
+    type: data
+    label: Ariba reference pack
+    value:
+    - name: Ariba reference pack on data 124 (CP000255_SAUSA300_1058_REF.fasta)
+      type: data_value
+      id: 6f08e76835493115
+      src: hda
+      hid: 978
+      job_id: 40f951b99b1884ad
+  - name: manifest
+    type: data
+    label: Manifest file
+    value:
+    - name: Sample manifest on (test_data/SA/FASTQ/*.fastq.gz)
+      type: data_value
+      id: 9aa688244f972b6e
+      src: hda
+      hid: 934
+      job_id: 59773054fbdb3df2
+  - name: ref_common
+    type: data
+    label: Common reference for output QC
+    value:
+    - name: CP000255_SAUSA300_1058_REF.fasta
+      type: data_value
+      id: bcbfc94bca111c69
+      src: hda
+      hid: 124
+      job_id: 59b465075fa21bf3
+  - name: section_radar_sfx
+    type: section
+    title: RADAR Sequence ID Suffix
+    inputs:
+    - name: radar_sfx_target
+      type: text
+      label: RADAR SeqID target suffix
+      value: ''
+      text_value: Empty.
+    - name: radar_sfx_version
+      type: integer
+      label: RADAR SeqID version suffix
+      value:
+      text_value: Empty.
+  - name: section_out_filt
+    type: section
+    title: Post-assembly Filter
+    inputs:
+    - name: cut_to_ref
+      type: boolean
+      label: Trim contigs to the matched reference regions
+      value: false
+    - name: one_seq_per_contig
+      type: boolean
+      label: Select no more than one output sequence per contig
+      value: false
+    - name: pad_gene
+      type: integer
+      label: Padding for detected matching genes (ORFs)
+      value: 200
+    - name: pad_assembled
+      type: integer
+      label: Padding for trimmed matching regions
+      value: 200
+    - name: ctg_ref_bases_min
+      type: integer
+      label: Minimum number of reference bases assembled
+      value: 1
+    - name: ctg_ref_bases_ratio_min
+      type: float
+      label: Minimum fraction of reference assembled
+      value: 0.75
+    - name: ctg_len_min
+      type: integer
+      label: Minimum sequence length
+      value: 1
+    - name: ctg_cov_min
+      type: integer
+      label: Minimum contig coverage
+      value: 20
+    - name: ctg_cov_ratio_min
+      type: float
+      label: Minimum contig coverage ratio
+      value: 0.05
+  - name: section_trim
+    type: section
+    title: Read trimming and filtering
+    inputs:
+    - name: read_minlen
+      type: integer
+      label: Minimum read length after trimming
+      value: 50
+    - name: primer_literals
+      type: text
+      label: Primers
+      value: ''
+      text_value: Empty.
+    - name: adapter_file
+      type: data
+      label: Adaptor sequences to trim
+      value: []
+    - name: clumpify
+      type: boolean
+      label: Filter optical duplicates
+      value: false
+    - name: filter_spikes
+      type: boolean
+      label: Filter spiked sequences
+      value: false
+    - name: spikes_file
+      type: data
+      label: Spiked sequences to filter out
+      value: []
+    - name: qc_samplerate
+      type: float
+      label: Subsampling rate for read QC report
+      value: 0.1
+  - name: cond_assembly_policy
+    type: conditional
+    test_param:
+      name: assembly_policy
+      type: select
+      label: Assembly Policy
+      value: wgs_fermilite
+      text_value: WGS with default Ariba assembler
+    inputs:
+    - name: section_adv
+      type: section
+      title: Advanced Options
+      inputs:
+      - name: assembly_cov
+        type: integer
+        label: Read subsampling depth
+        value: 100
+      - name: assembly_cov_min
+        type: integer
+        label: Minimum estimated coverage depth
+        value: 10
+      - name: section_adv_ariba
+        type: section
+        title: Even More Advanced Ariba Options
+        inputs:
+        - name: gene_nt_extend
+          type: integer
+          label: Extend gene matches to find start/stop codons
+          value: 30
+        - name: nucmer_min_id
+          type: integer
+          label: Minimum Nucmer alignment identity (delta-filter -i)
+          value: 90
+        - name: nucmer_min_len
+          type: integer
+          label: Minimum Nucmer alignment length (delta-filter -i)
+          value: 20
+        - name: nucmer_breaklen
+          type: integer
+          label: Value to use for -breaklen when running Nucmer
+          value: 200
+      - name: cond_assembler
+        type: conditional
+        test_param:
+          name: assembler
+          type: select
+          label: Assembler
+          value: fermilite
+          text_value: Fermilite Ariba default
+        inputs: []
+outputs:
+  manifest_out:
+    id: 4d94e3e09cabeae6
+    src: hda
+    uuid: 9894debb-9601-4a36-9e84-804fdef00427
+    name: Manifest matching the extracted sequences on data 124, data 934, and data
+      978 (Ariba reference pack on data 124 (CP000255_SAUSA300_1058_REF.fasta), Sample
+      manifest on (test_data/SA/FASTQ/*.fastq.gz))
+  radar_pack_out:
+    id: c584725e40357be1
+    src: hda
+    uuid: 9e7ae7af-bb6d-46c4-b34e-8762572149b7
+    name: Gene Extractor result pack on data 124, data 934, and data 978 (Ariba reference
+      pack on data 124 (CP000255_SAUSA300_1058_REF.fasta), Sample manifest on (test_data/SA/FASTQ/*.fastq.gz))
+  seq_out:
+    id: 1a9a80a87281701a
+    src: hda
+    uuid: 2ca29ac5-4eab-4777-a85e-b9e1c57c8a9b
+    name: Extracted sequences on data 124, data 934, and data 978 (Ariba reference
+      pack on data 124 (CP000255_SAUSA300_1058_REF.fasta), Sample manifest on (test_data/SA/FASTQ/*.fastq.gz))
+  web_index_html_out:
+    id: 53902471ea792d48
+    src: hda
+    uuid: fd673896-35a3-4dc1-8146-2e376775b618
+    name: Diagnostic Web report on data 124, data 934, and data 978 (Ariba reference
+      pack on data 124 (CP000255_SAUSA300_1058_REF.fasta), Sample manifest on (test_data/SA/FASTQ/*.fastq.gz))
+  web_tar_out:
+    id: 634bd43b3ff76edd
+    src: hda
+    uuid: e7c9fb27-9337-4ad3-8024-588c4e47688b
+    name: Archived diagnostic data on data 124, data 934, and data 978 (Ariba reference
+      pack on data 124 (CP000255_SAUSA300_1058_REF.fasta), Sample manifest on (test_data/SA/FASTQ/*.fastq.gz))
+parent_jobs:
+  40f951b99b1884ad:
+    panel_section_name: NGS Microbial Sequencing Toolbox
+    panel_section_id: ngs_mstb
+    name: Prepare Ariba reference pack
+    id: ariba_prepareref
+    version: 1.0.0
+    job_id: 40f951b99b1884ad
+    history_id: 249c217ff5aa1843
+    user_email: xxx@nowhere.com
+    create_time: '2018-07-29T20:06:24.748668'
+    update_time: '2018-07-29T20:06:36.146790'
+    external_id: 1299565
+    job_metrics:
+    - name: runtime_seconds
+      plugin: core
+      raw_value: '8.0000000'
+      title: Job Runtime (Wall Clock)
+      value: 8 seconds
+    - name: galaxy_slots
+      plugin: core
+      raw_value: '1.0000000'
+      title: Cores Allocated
+      value: '1'
+    - name: start_epoch
+      plugin: core
+      raw_value: '1532894786.0000000'
+      title: Job Start Time
+      value: '2018-07-29 16:06:26'
+    - name: end_epoch
+      plugin: core
+      raw_value: '1532894794.0000000'
+      title: Job End Time
+      value: '2018-07-29 16:06:34'
+    inputs:
+    - name: cond_preset
+      type: conditional
+      test_param:
+        name: preset
+        type: select
+        label: Parameter Preset
+        value: unval_generic
+        text_value: Unvalidated Generic Targets
+      inputs:
+      - name: fasta
+        type: data
+        label: FASTA file with references
+        value:
+        - name: CP000255_SAUSA300_1058_REF.fasta
+          type: data_value
+          id: bcbfc94bca111c69
+          src: hda
+          hid: 124
+          job_id: 59b465075fa21bf3
+      - name: cond_all_coding
+        type: conditional
+        test_param:
+          name: all_coding
+          type: select
+          label: Sequences in FASTA are either all coding or all non-coding
+          value: yes
+          text_value: All Coding
+        inputs: []
+      - name: cond_cluster
+        type: conditional
+        test_param:
+          name: cluster
+          type: select
+          label: How to build clusters from reference sequences
+          value: no_cdhit
+          text_value: No Clustering
+        inputs: []
+      - name: section_adv
+        type: section
+        title: Advanced Options
+        inputs:
+        - name: min_gene_length
+          type: integer
+          label: Minimum gene length
+          value: 6
+        - name: max_gene_length
+          type: integer
+          label: Maximum gene length
+          value: 40000
+        - name: genetic_code
+          type: select
+          label: Genetic code
+          value: '11'
+    outputs:
+      ref_pack:
+        id: 6f08e76835493115
+        src: hda
+        uuid: e934e13e-a3d9-4164-866e-381a8f1ed953
+        name: Ariba reference pack on data 124 (CP000255_SAUSA300_1058_REF.fasta)
+  59773054fbdb3df2:
+    panel_section_name: NGS Microbial Sequencing Toolbox
+    panel_section_id: ngs_mstb
+    name: Generate manifest for NGS (paired-end) sequence files
+    id: make_seq_manifest
+    version: 1.0.2
+    job_id: 59773054fbdb3df2
+    history_id: 249c217ff5aa1843
+    user_email: xxx@nowhere.com
+    create_time: '2018-07-26T22:57:00.239818'
+    update_time: '2018-07-26T22:57:12.008410'
+    external_id: 1299074
+    job_metrics:
+    - name: runtime_seconds
+      plugin: core
+      raw_value: '8.0000000'
+      title: Job Runtime (Wall Clock)
+      value: 8 seconds
+    - name: galaxy_slots
+      plugin: core
+      raw_value: '1.0000000'
+      title: Cores Allocated
+      value: '1'
+    - name: start_epoch
+      plugin: core
+      raw_value: '1532645822.0000000'
+      title: Job Start Time
+      value: '2018-07-26 18:57:02'
+    - name: end_epoch
+      plugin: core
+      raw_value: '1532645830.0000000'
+      title: Job End Time
+      value: '2018-07-26 18:57:10'
+    inputs:
+    - name: cond_preset
+      type: conditional
+      test_param:
+        name: preset
+        type: select
+        label: Parameter Preset
+        value: val_sa_at
+        text_value: Validated Staphylococcus aureus Alpha-Toxin gene
+      inputs:
+      - name: path
+        type: text
+        label: Wild card file path pattern
+        value: test_data/SA/FASTQ/*.fastq.gz
+      - name: forward
+        type: text
+        label: Pattern to identify forward reads
+        value: _R1_
+      - name: reverse
+        type: text
+        label: Pattern to identify reverse reads
+        value: _R2_
+      - name: samp_id_extractor
+        type: text
+        label: Pattern to extract Sample ID from the file name
+        value: ^[^_]+
+      - name: adv
+        type: section
+        title: Advanced Options
+        inputs:
+        - name: sample_id_prefix
+          type: text
+          label: Prefix to add to Sample ID
+          value: ''
+          text_value: Empty.
+        - name: samp_id_nomatch
+          type: select
+          label: Action for non-extractable SampleIDs
+          value: error
+          text_value: Error
+        - name: dir_name_is_sample_id
+          type: boolean
+          label: Directory-per-sample layout
+          value: false
+        - name: input_seqfile_ext
+          type: text
+          label: Extension to select sequencing files
+          value: .fastq.gz
+    outputs:
+      out_file:
+        id: 9aa688244f972b6e
+        src: hda
+        uuid: 99f7a212-a2e9-4f7f-bee6-15c10da7b204
+        name: Sample manifest on (test_data/SA/FASTQ/*.fastq.gz)
+      out_file_rejected:
+        id: c5845606a941ac49
+        src: hda
+        uuid: 40e97dfc-4dbb-49a6-99f9-358f6997ed0a
+        name: File names that did not match the SampleID extractor pattern on (test_data/SA/FASTQ/*.fastq.gz)
+  59b465075fa21bf3:
+    id: upload1
+    job_id: 59b465075fa21bf3
+    user_email: xxx@nowhere.com
+    create_time: '2017-11-08T23:06:34.418690'
+    update_time: '2017-11-08T23:06:51.776992'
+    external_id: '66352'
+    job_metrics:
+    - name: runtime_seconds
+      plugin: core
+      raw_value: '14.0000000'
+      title: Job Runtime (Wall Clock)
+      value: 14 seconds
+    - name: galaxy_slots
+      plugin: core
+      raw_value: '1.0000000'
+      title: Cores Allocated
+      value: '1'
+    - name: start_epoch
+      plugin: core
+      raw_value: '1510182396.0000000'
+      title: Job Start Time
+      value: '2017-11-08 18:06:36'
+    - name: end_epoch
+      plugin: core
+      raw_value: '1510182410.0000000'
+      title: Job End Time
+      value: '2017-11-08 18:06:50'
+    outputs:
+      output0:
+        id: bcbfc94bca111c69
+        src: hda
+        uuid: 64733473-28f2-4f14-9932-d4e431e4833c
+        name: CP000255_SAUSA300_1058_REF.fasta

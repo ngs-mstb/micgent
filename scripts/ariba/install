@@ -1,0 +1,14 @@
+#!/bin/sh
+set -ex
+this_dir=$(cd "$(dirname $0)" && pwd)
+conda env create -n ariba --file $this_dir/ariba-env.txt
+source activate ariba
+pip install nose
+git clone https://github.com/sanger-pathogens/ariba.git
+pushd ariba
+python setup.py test
+pip install .
+mkdir -p built_in_test && pushd built_in_test
+ariba test out
+
+

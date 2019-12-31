@@ -1,0 +1,8 @@
+atac_encode__config:
+    class: File
+    path: atac.conf 
+atac_encode__home: /xxxpkg/projects/atacseq_enc
+atac_encode__threads: 32
+bds_home: ~/.bds
+samples:
+    $import: samples.yaml

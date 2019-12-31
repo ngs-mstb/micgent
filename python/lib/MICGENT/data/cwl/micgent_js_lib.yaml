@@ -1,0 +1,39 @@
+  # sort globbed file names to return paired read files *_1, *_2 always in the same order
+  - var sortFileObjectsByName = function(x) {
+      x.sort(function(a,b) { return a.path > b.path });
+      return x;
+    };
+  # if requested, sort paired BBmap output with seqkit (for determinism
+  # in multithreaded mode
+  - var bbtoolsSortedOutputsCond = function(doSort,outPrefix,threads) {
+      if(!doSort) {
+            return " out="+outPrefix+"_1.fastq.gz "+
+            "out2="+outPrefix+"_2.fastq.gz";
+        }
+        else {
+            return " out="+outPrefix+"_uns_1.fastq.gz "+
+            "out2="+outPrefix+"_uns_2.fastq.gz && "+
+            "seqkit sort --threads "+String(threads)+" "+
+            "-o "+outPrefix+"_1.fastq.gz "+
+            outPrefix+"_uns_1.fastq.gz && "+
+            "seqkit sort  --threads "+String(threads)+" "+
+            "-o "+outPrefix+"_2.fastq.gz "+
+            outPrefix+"_uns_2.fastq.gz";
+        }
+    };
+
+  - var getCores = function(par,runtime) {
+      if(par) { return par; }
+      else { return runtime.cores; }
+    };
+
+  - var getAribaCores = function(par,runtime,inputs) {
+      if(par) { return par; }
+      else if(inputs.assembler == "fermilite") { return 1; }
+      else { return 4; }
+    };
+
+  - var getFastqcCores = function(par,runtime) {
+      if(par[0]) { return par[0]; }
+      else { return Math.min(2,par[1]); }
+    };

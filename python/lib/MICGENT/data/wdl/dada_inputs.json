@@ -1,0 +1,5 @@
+{
+  "dada_wf.threads": "32",
+  "dada_wf.primer_literals": ["GTGCCAGCMGCCGCGGTAA","GGACTACHVGGGTWTCTAAT"],
+  "dada_wf.sampleSheetFile": "sample_sheet.csv"
+}

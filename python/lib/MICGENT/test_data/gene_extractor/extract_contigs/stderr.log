@@ -1,0 +1,214 @@
+18-06-15 18:20:05 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['samtools', 'faidx', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa']
+18-06-15 18:20:05 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['samtools', 'faidx', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa']
+[M::mm_idx_gen::0.003*0.68] collected minimizers
+[M::mm_idx_gen::0.004*1.27] sorted minimizers
+[M::main::0.004*1.26] loaded/built the index for 3 target sequence(s)
+[M::mm_mapopt_update::0.004*1.21] mid_occ = 4
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 3
+[M::mm_idx_stat::0.004*1.19] distinct minimizers: 367 (86.38% are singletons); average occurrences: 1.139; average spacing: 10.139
+[M::worker_pipeline::0.006*1.19] mapped 1 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa
+[M::main] Real time: 0.006 sec; CPU: 0.007 sec
+18-06-15 18:20:05 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa.bwa.tmp -o /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/ref_to_asm.bam -) && \\\n        samtools index /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/ref_to_asm.bam && \\\n        rm -rf /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa.bwa.tmp\n        ']
+[M::mm_idx_gen::0.008*0.24] collected minimizers
+[M::mm_idx_gen::0.009*0.54] sorted minimizers
+[M::main::0.009*0.54] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.009*0.53] mid_occ = 2
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.009*0.53] distinct minimizers: 99 (100.00% are singletons); average occurrences: 1.000; average spacing: 9.697
+[M::worker_pipeline::0.012*0.66] mapped 3 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa
+[M::main] Real time: 0.013 sec; CPU: 0.009 sec
+18-06-15 18:20:05 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa.bwa.tmp -o /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/asm_to_ref.bam -) && \\\n        samtools index /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/asm_to_ref.bam && \\\n        rm -rf /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa.bwa.tmp\n        ']
+java -Djava.library.path=/xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/jni/ -ea -Xmx4096m -cp /xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx4096m overwrite=true in=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq in2=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_asm/asm.sam ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa nodisk sampleseed=10 deterministic ambig=random minid=0.96 idfilter=0.96 inserttag idtag threads=1 bamscript=bbmap_bam.sh
+Picked up _JAVA_OPTIONS: -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx4096m, overwrite=true, in=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq, in2=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq, out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_asm/asm.sam, ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa, nodisk, sampleseed=10, deterministic, ambig=random, minid=0.96, idfilter=0.96, inserttag, idtag, threads=1, bamscript=bbmap_bam.sh]
+Version 38.06
+
+Set threads to 1
+Choosing a site randomly for ambiguous mappings.
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.926
+Found samtools 1.7
+Executing dna.FastaToChromArrays2 [/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=false, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=true]
+
+Set genScaffoldInfo=true
+Set genome to 1
+
+Loaded Reference:	0.005 seconds.
+Loading index for chunk 1-1, build 1
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	0.243 seconds.
+Analyzed Index:   	3.019 seconds.
+Started output stream:	0.051 seconds.
+Cleared Memory:    	0.232 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 1 mapping thread.
+Detecting finished threads: 0
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	16000
+Minimum Score Ratio:  	0.92648
+Mapping Mode:         	normal
+Reads Used:           	1118	(280618 bases)
+
+Mapping:          	2.162 seconds.
+Reads/sec:       	517.09
+kBases/sec:      	129.79
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 83.5420% 	      467 	 83.5420% 	      234434
+bad pairs:       	  0.1789% 	        1 	  0.1789% 	         502
+insert size avg: 	  504.79
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 92.4866% 	      517 	 92.4866% 	      129767
+unambiguous:     	 92.4866% 	      517 	 92.4866% 	      129767
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 62.2540% 	      348 	 62.2540% 	       87348
+semiperfect site:	 62.4329% 	      349 	 62.4329% 	       87599
+rescued:         	  0.1789% 	        1
+
+Match Rate:      	      NA 	       NA 	 99.6948% 	      129375
+Error Rate:      	 32.4952% 	      168 	  0.2882% 	         374
+Sub Rate:        	 31.7215% 	      164 	  0.2828% 	         367
+Del Rate:        	  0.7737% 	        4 	  0.0031% 	           4
+Ins Rate:        	  0.1934% 	        1 	  0.0023% 	           3
+N Rate:          	  0.7737% 	        4 	  0.0170% 	          22
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 87.8354% 	      491 	 87.8354% 	      123241
+unambiguous:     	 87.8354% 	      491 	 87.8354% 	      123241
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	 49.1950% 	      275 	 49.1950% 	       69025
+semiperfect site:	 49.3739% 	      276 	 49.3739% 	       69276
+rescued:         	  1.2522% 	        7
+
+Match Rate:      	      NA 	       NA 	 99.4588% 	      122576
+Error Rate:      	 43.3809% 	      213 	  0.4998% 	         616
+Sub Rate:        	 43.1772% 	      212 	  0.4933% 	         608
+Del Rate:        	  0.4073% 	        2 	  0.0016% 	           2
+Ins Rate:        	  0.2037% 	        1 	  0.0049% 	           6
+N Rate:          	  0.8147% 	        4 	  0.0414% 	          51
+
+Total time:     	6.844 seconds.
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+18-06-15 18:20:13 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', "set -euo pipefail; bbmap.sh -Xmx4096m overwrite=true in='/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq' in2='/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq' out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_asm/asm.sam ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa nodisk sampleseed=10 deterministic ambig=random minid=0.96 idfilter=0.96 inserttag idtag threads=1 bamscript=bbmap_bam.sh && sh bbmap_bam.sh"]
+Picked up _JAVA_OPTIONS: -Xmx4096m -Xms4096m -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+18-06-15 18:20:14 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['pilon', '--threads', '1', '--genome', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/assembly.fa', '--bam', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_asm/asm_sorted.bam', '--outdir', '.', '--output', 'asm.', '--changes', '--tracks', '--iupac', '--mindepth', '5', '--fix', 'snps,gaps', '--iupacminfreq', '0.7', '--iupacminqualsum', '150']
+java -Djava.library.path=/xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/jni/ -ea -Xmx4096m -cp /xxxpkg/projects/mgx/mc3dev/envs/ariba/opt/bbmap-38.06/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx4096m overwrite=true in=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq in2=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm.sam ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa nodisk sampleseed=10 deterministic ambig=random inserttag idtag local threads=1 bamscript=bbmap_bam.sh
+Picked up _JAVA_OPTIONS: -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx4096m, overwrite=true, in=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq, in2=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq, out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm.sam, ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa, nodisk, sampleseed=10, deterministic, ambig=random, inserttag, idtag, local, threads=1, bamscript=bbmap_bam.sh]
+Version 38.06
+
+Set threads to 1
+Choosing a site randomly for ambiguous mappings.
+Found samtools 1.7
+Executing dna.FastaToChromArrays2 [/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=false, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=true]
+
+Set genScaffoldInfo=true
+Set genome to 1
+
+Loaded Reference:	0.004 seconds.
+Loading index for chunk 1-1, build 1
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	0.205 seconds.
+Analyzed Index:   	4.037 seconds.
+Started output stream:	0.039 seconds.
+Cleared Memory:    	0.842 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 1 mapping thread.
+Detecting finished threads: 0
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	16000
+Minimum Score Ratio:  	0.56
+Mapping Mode:         	normal
+Reads Used:           	1118	(280618 bases)
+
+Mapping:          	1.638 seconds.
+Reads/sec:       	682.37
+kBases/sec:      	171.27
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	 51.1628% 	      286 	 51.1628% 	      143572
+bad pairs:       	  0.0000% 	        0 	  0.0000% 	           0
+insert size avg: 	  487.89
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 69.4097% 	      388 	 69.4097% 	       97388
+unambiguous:     	 69.4097% 	      388 	 69.4097% 	       97388
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  8.9445% 	       50 	  8.9445% 	       12550
+semiperfect site:	 13.0590% 	       73 	 13.0590% 	       18323
+rescued:         	  0.3578% 	        2
+
+Match Rate:      	      NA 	       NA 	 90.8131% 	       88442
+Error Rate:      	 80.6701% 	      313 	  1.2732% 	        1240
+Sub Rate:        	 80.6701% 	      313 	  1.2722% 	        1239
+Del Rate:        	  0.2577% 	        1 	  0.0010% 	           1
+Ins Rate:        	  0.0000% 	        0 	  0.0000% 	           0
+N Rate:          	 32.9897% 	      128 	  7.9136% 	        7707
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	 64.5796% 	      361 	 64.5796% 	       90611
+unambiguous:     	 64.5796% 	      361 	 64.5796% 	       90611
+ambiguous:       	  0.0000% 	        0 	  0.0000% 	           0
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  7.3345% 	       41 	  7.3345% 	       10291
+semiperfect site:	 11.6279% 	       65 	 11.6279% 	       16315
+rescued:         	  0.5367% 	        3
+
+Match Rate:      	      NA 	       NA 	 89.7217% 	       81365
+Error Rate:      	 80.6094% 	      291 	  1.8514% 	        1679
+Sub Rate:        	 80.6094% 	      291 	  1.7676% 	        1603
+Del Rate:        	  0.5540% 	        2 	  0.0827% 	          75
+Ins Rate:        	  0.2770% 	        1 	  0.0011% 	           1
+N Rate:          	 35.7341% 	      129 	  8.4269% 	        7642
+
+Total time:     	7.007 seconds.
+[bam_sort_core] merging from 0 files and 3 in-memory blocks...
+18-06-15 18:20:22 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', "set -euo pipefail; bbmap.sh -Xmx4096m overwrite=true in='/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_1.fq' in2='/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/out/clusters/cluster/reads_2.fq' out=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm.sam ref=/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa nodisk sampleseed=10 deterministic ambig=random inserttag idtag local threads=1 bamscript=bbmap_bam.sh && sh bbmap_bam.sh"]
+Picked up _JAVA_OPTIONS: -Xmx4096m -Xms4096m -XX:ParallelGCThreads=1 -XX:+UseParallelOldGC
+18-06-15 18:20:23 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['pilon', '--threads', '1', '--genome', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa', '--bam', '/Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm_sorted.bam', '--outdir', '.', '--output', 'asm.', '--changes', '--tracks', '--iupac', '--mindepth', '5', '--fix', 'snps,gaps']
+[M::mm_idx_gen::0.004*0.47] collected minimizers
+[M::mm_idx_gen::0.005*0.97] sorted minimizers
+[M::main::0.005*0.97] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.005*0.95] mid_occ = 2
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.005*0.94] distinct minimizers: 99 (100.00% are singletons); average occurrences: 1.000; average spacing: 9.697
+[M::worker_pipeline::0.009*0.79] mapped 1 sequences
+[M::main] Version: 2.8-r672
+[M::main] CMD: minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm_pilon/asm..fasta
+[M::main] Real time: 0.010 sec; CPU: 0.008 sec
+18-06-15 18:20:24 [ INFO] pid:59052	thread:MainThread	             pysteps.:run_step    :192  :	run_step command: ['/bin/bash', '--noprofile', '--norc', '-c', 'set -euo pipefail;         ln -s /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/reference.fa ref.fa\n        (minimap2 -x asm10 -a ref.fa /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm_pilon/asm..fasta \\\n        | samtools view -@ 1 -bSu - \\\n        | samtools sort -@ 1 -T /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm_pilon/asm..fasta.bwa.tmp -o /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/asm_ref_to_ref.bam -) && \\\n        samtools index /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/asm_ref_to_ref.bam && \\\n        rm -rf /Xxx/xxx/micgent/python/test_run/run.test.atoyyeku.tmp/ariba_small_sa/wd/e/d/out_tmpdirbQ5Uaw/post_asm/clusters/cluster/mpl_ref/asm_pilon/asm..fasta.bwa.tmp\n        ']
