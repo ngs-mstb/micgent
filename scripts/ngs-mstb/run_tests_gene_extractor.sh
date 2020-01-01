@@ -2,6 +2,13 @@
 this_dir=$(cd $(dirname $0); pwd)
 deploy_root="$1"
 shift
+quick="$1"
+shift
+if [[ "$quick"z == "quick"z ]]; then
+    large_data=""
+else
+    large_data="--large-test-data=$deploy_root/micgent_large_test_data"
+fi
 [ -n "$deploy_root" ] || exit 1
 pytest --run-slow \
     --ignore test_run \
@@ -10,7 +17,7 @@ pytest --run-slow \
     --extra-config=$this_dir/run_tests_gene_extractor.yaml \
     --log-cli-level=DEBUG \
     --log-file=test_std.log \
-    --large-test-data=$deploy_root/micgent_large_test_data
+    "$large_data"
 #    -k test_run_extractor_determinism_rsv_1
 #    -k test_run_extractor_small_rsv
 #    --huge-test-data=$deploy_root/micgent_huge_test_data \
