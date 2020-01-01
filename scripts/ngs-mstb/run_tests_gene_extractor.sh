@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 this_dir=$(cd $(dirname $0); pwd)
 deploy_root="$1"
 shift
