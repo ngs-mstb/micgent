@@ -170,7 +170,7 @@ in the NGS-MSTB Galaxy container.
 
 ### Multi-user Galaxy instance
 
-In the commands above, the environment variable `-e GALAXY_CONFIG_SINGLE_USER=admin_ge@ngs-mstb.nowhere` instructs Galaxy to starts in a single-user mode and automatically login the default Galaxy administrator account. Although you can use Galaxy UI in an anonymous session without logging in, you will not get any persistence of your work history if your restart the container or even close the browser window. This is why we used the automatic login above. However, this is only acceptable if your Galaxy container is executed on an isolated host and not shared between several user. If you want to use it in a shared environment, you should at least protect the Galaxy admin access by overriding the default values 
+In the commands above, the environment variable `-e GALAXY_CONFIG_SINGLE_USER=admin_ge@ngs-mstb.nowhere` instructs Galaxy to starts in a single-user mode and automatically login the default Galaxy administrator account. Although you can use Galaxy UI in an anonymous session without logging in, you will not get any persistence of your work history if your restart the container or even close the browser window. This is why we used the automatic login above. However, this is only acceptable if your Galaxy container is executed on an isolated host and not shared between several users. If you want to use it in a shared environment, you should at least protect the Galaxy admin access by overriding the default values 
 of several access keys:
 
 ```
@@ -219,24 +219,27 @@ using the Docker Compose service definition. The latter will ensure that
 the container will get automatically restarted with the same configuration
 every time the host is rebooted.
 
-## In depth understanding of the NGS-MSTB Galaxy tools
+## Developing in-depth understanding of the NGS-MSTB Galaxy tools interface
 
-The NGS-MSTB Galaxy tools provide extensive Help strings linked to all parameters, as well as 
+You can start with the interactive tours linked from the front page of
+the NGS-MSTB container UI. As the next step, the NGS-MSTB Galaxy tools provide 
+extensive Help strings linked to all parameters, as well as 
 tool-level Help sections located below the Execute button on each tool form.
 Those tool-level Help sections describe what the tool does, its place in the
-overall workflow and the outputs.
+overall workflow and the outputs. Each tab of the main NGS-MSTB Web report
+starts with a short description of its content.
 
 ## More options for running the container
 
-The NGS-MSTB Docker image is based on the [Galaxy Docker image](https://github.com/bgruening/docker-galaxy-stable). The upstream Web page describes
-in detail various additional configuration options which can be used at
-run-time.
+The NGS-MSTB Docker image is built on top of the [Galaxy Docker image](https://github.com/bgruening/docker-galaxy-stable). The front page of that upstream repository describes
+in detail numerous additional configuration options which can be applied to
+further modify the behaviour of our derived image.
 
 ## Automated testing suite
 
 The software includes a testing suite that is composed both from unit tests and integration tests.
 The integration tests include checks for determinism. Those are implemented by running the same
-samples in multiple replicates and in several batches, and then comparing outputs for complete
+set of samples in multiple replicates and in several batches, and then comparing outputs for complete
 identity across replicates and batches.
 
 The anonymized input sequencing reads used in the tests are available from 
