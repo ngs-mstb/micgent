@@ -54,8 +54,14 @@ made available to the Docker Desktop.
 
 ### The minimum hardware resources
 
-The Docker containers should be able to use at least four CPU cores and 10 GB of RAM. On Linux hosts, the containers by default have access to all CPUs and RAM of the host. On Mac and Windows, the containers run inside a VM, and the default Docker settings restrict the VM resource allocation. You should check and adjust these if necessary - **the default settings may be too tight for NGS-MSTB**. For example, under Docker Desktop, these settings will be found under _Preferences -> Advanced_.
-See disk space requirements below.
+The Docker containers should be able to use at least four CPU cores and 10 GB of RAM. On Linux hosts, 
+the containers by default have access to all CPUs and RAM of the host. On Mac and Windows, the containers 
+run inside a VM, and the default Docker settings restrict the VM resource allocation. You should check 
+and adjust these if necessary - **the default settings may be too tight for NGS-MSTB**. For example, 
+under Docker Desktop, these settings will be found under _Preferences -> Advanced_. You should make and apply any changes to Docker Desktop before running the Docker commands because the Docker VM will get 
+restarted and all running commands or containers terminated.
+
+See below in this text about the disk space requirements.
 
 If you are increasing the hardware resources in order to process your data faster, make sure that you **increment cores and RAM proportionally**: for each four additional CPU cores, add eight GB of RAM.
 
