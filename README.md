@@ -223,3 +223,15 @@ overall workflow and the outputs.
 The NGS-MSTB Docker image is based on the [Galaxy Docker image](https://github.com/bgruening/docker-galaxy-stable). The upstream Web page describes
 in detail various additional configuration options which can be used at
 run-time.
+
+## Automated testing suite
+
+The software includes a testing suite that is composed both from unit tests and integration tests.
+The integration tests include checks for determinism. Those are implemented by running the same
+samples in multiple replicates and in several batches, and then comparing outputs for complete
+identity across replicates and batches.
+
+The anonymized input sequencing reads used in the tests are available from 
+[Zenodo NGS-MSTB community page](https://zenodo.org/communities/ngs-mstb).
+In the repository `ngs-mstb-docker`, the script `docker_run_tests.sh` will execute the tests
+inside a container.
