@@ -23,8 +23,8 @@ def keys_equal(a,b,keys=None):
         keys = list(a)
     keys_a = keys
     keys_b = keys
-    return a[keys_a].sort_values(keys_a).reset_index(drop=True).equals(
-        b[keys_b].sort_values(keys_b).reset_index(drop=True))
+    return a[keys_a].reset_index(drop=True).sort_values(keys_a).reset_index(drop=True).equals(
+        b[keys_b].reset_index(drop=True).sort_values(keys_b).reset_index(drop=True))
 
 def create_empty_df(columns):
     return pd.DataFrame(columns=columns)
