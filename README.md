@@ -28,9 +28,10 @@ GPLv3. See also COPYING file that accompanies the source code.
 
 ## Citation
 
-To learn about the motivation and the algorithm please see:
+To learn about the motivation and the algorithm please see the manuscript:
 bioRxiv URL
-If you find this software useful, please cite the above manuscript.
+
+If you find this software useful, please cite the manuscript.
 
 ## How to run - the overview
 
