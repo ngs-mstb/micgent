@@ -73,6 +73,12 @@ The Galaxy instance inside the container will take about a minute to become full
 
 Eventually, you will see the Galaxy user interface (UI) in your browser window. Follow the links at the center to take the interactive tours of executing the example of assembling several complete genomes of Respiratory Syncytial Virus (RSV) and reviewing the resulting Web report. All necessary example datasets are included in the container.
 
+The RSV assembly example from the tour will take about 1.5 hour to run on four cores of a modern 
+CPU. If you are running it on a laptop or other personal workstation, you might want to check 
+your power saving setting in the OS to make sure the system will not go to sleep when you are not 
+interacting with it. For example, on the Mac you should check the box 
+`Prevent computer from sleeping automatically when the display is off`.
+
 ### Required disk space
 
 The Quick Start command above will use transient anonymous Docker volumes for both temporary working files during pipeline execution and the final outputs stored as Galaxy datasets. This has several implications:
@@ -103,7 +109,26 @@ host machine. That directory should be empty when you first run this command and
 
 **Note**: Your Docker installation will still need to have enough free space to keep the container image itself (about 6GB). If you try a lot of different containers, this space fills up quickly, which creates a common source of problems encountered while using Docker in general. The housekeeping commands
 such as `docker system prune` and `docker volume prune` in case of Docker 
-might help in such situations.
+might help in such situations. You can also use these commands to clean up all space used by Docker
+after you are done with using the image for good and stopped the container with 
+`docker stop ngs-mstb`. *Note*: the `prune` command will remove all unused images and stopped containers, not just NGS-MSTB, so you should be careful with using it.
+
+### Shutting down and freeing up space
+
+Use `docker stop ngs-mstb` to stop the container. The image will still be present. If you need to
+remove the image, you can use `docker rmi ngsmstb/ngs-mstb:latest`.
+
+Galaxy datafiles in the host directory that you bind-mounted to `/export` will not be deleted when the
+image is deleted. You will have to use OS commands to remove them. You will probably have to invoke 
+administrative priviliges in the host OS because the files under that
+directory will be created by the user `galaxy` within the container rather than by your current user
+account in the host OS. The alternative approach is to delete them using the container:
+
+```
+docker run --rm --user root \
+-v "/host/directory/path":"/export" \
+ngsmstb/ngs-mstb:latest rm -rf /export
+```
 
 ### How to supply your NGS sequencing inputs
 
