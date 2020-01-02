@@ -71,9 +71,14 @@ The Quick Start command above will use transient anonymous Docker volumes for bo
 - Once you stop the container (`docker stop`) or reboot the host, 
   your output data and all Galaxy histories will disappear
 - The file system where your Docker installation creates volumes should 
-  have enough free space to hold the temporary pipeline data. The pipeline caches all intermediate files during its run for the ability to automatically retry  any failed workflow steps. This means that it will use a total of XXX GB in the case of RSV example multiplied by the number of samples in a given run. On Mac and Windows, Docker volumes typically reside on the same file system as the host operating system (OS). On Linux, the volumes might be on a relatively small separate partition that can overfill easily.
+  have enough free space to hold the temporary pipeline data. The pipeline caches all intermediate output files during its run for 
+  the ability to automatically retry  any failed workflow steps. This means that it will use a total of 10 GB at peak time in the case of the eight RSV genomes example running on four CPU cores. Higher degree of parallelism (more CPU cores in the container) will increase peak disk use because more transient work
+  files will coexist in the workflow at any given time. On Mac and Windows, Docker volumes typically reside on the same file 
+  system as the host operating system (OS). On Linux, the volumes might be on a relatively small separate partition that can 
+  overfill easily.
 
-For the use beyond running the Quick Start example, you might want to supply a "bind-mount" that will make your outputs persist across container restarts and allow using any location you want for the pipeline temporary data:
+For the use beyond running the Quick Start example, you might want to supply a "bind-mount" that will make your outputs persist 
+across container restarts and allow using any location you want for the pipeline temporary data:
 
 ```
 docker run --rm -d -p 8080:80 --name ngs-mstb \
