@@ -41,9 +41,10 @@ Currently, the dynamic Web report that NGS-MSTB generates will load several open
 
 ## How to run - Docker
 
-This assumes that you already have got some system operational on the host machine allowing you to run Docker containers. Our examples use Docker commands entered from a Linux terminal. You can easily adapt the commands to a different container execution system such as Redhat Podman and/or different host operating system (MacOS or Windows). Most of our testing of the NGS-MSTB container has been done
+This assumes that you already have made some system operational on the host machine allowing you to run Docker containers. Our examples use Docker commands entered from a Linux terminal. You can easily adapt the commands to a different container execution system such as Redhat Podman and/or different host operating system (MacOS or Windows). Most of our testing of the NGS-MSTB container has been done
 on a Linux VM with 64GB RAM and 16 CPU cores and Mac PowerBook Pro with 32GB RAM
-and 6 CPU cores (12 cores with hyperthreading)
+and 6 CPU cores (12 cores with hyperthreading). On the Mac, we tested under minimum resources of 10GB RAM and 4 CPU cores
+made available to the Docker Desktop.
 
 ### The minimum hardware resources
 
