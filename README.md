@@ -16,7 +16,13 @@ The software was successfully deployed as the assembly module in a system valida
 
 ### Availability and Implementation
 
-Source code, binary Conda packages and testing datasets are freely available from this and several associated repositories on GitHub as well as on Zenodo. The pipeline provides a user interface based on the Galaxy bioinformatics workbench, dynamic Web reports with genome browser views and a distributed backend coded with Common Workflow Language and Python. A Docker container is available to simplify deployment.
+Source code, binary Conda packages and testing datasets are freely available from several associated 
+repositories in [GitHub NGS-MSTB organization](https://github.com/ngs-mstb) 
+and in [Zenodo NGS-MSTB community](https://zenodo.org/communities/ngs-mstb). The pipeline provides a user interface based 
+on the [Galaxy bioinformatics workbench](https://galaxyproject.org/), dynamic Web reports 
+with [IGV.js](https://github.com/igvteam/igv.js/) genome browser views and a distributed backend coded with 
+[Common Workflow Language](https://www.commonwl.org/) and Python. A Docker 
+[container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) is available to simplify deployment.
 
 ## Author
 
