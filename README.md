@@ -216,7 +216,9 @@ in `.fastq.gz` Then, in the `Generate Manifest...` tool, you would supply:
 
 NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
 as a security precaution in order to prevent the Web users from accessing arbitrary paths
-inside the running container.
+inside the running container. The built-in example FASTQ files are located under 
+`seqstore/test_data` so that they would not clash with your own files bind-mounted
+under `seqstore/data`.
 
 #### FASTA reference files
 
