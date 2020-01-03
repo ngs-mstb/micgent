@@ -21,8 +21,13 @@ repositories in [GitHub NGS-MSTB organization](https://github.com/ngs-mstb)
 and in [Zenodo NGS-MSTB community](https://zenodo.org/communities/ngs-mstb). The pipeline provides a user interface based 
 on the [Galaxy bioinformatics workbench](https://galaxyproject.org/), dynamic Web reports 
 with [IGV.js](https://github.com/igvteam/igv.js/) genome browser views and a distributed backend coded with 
-[Common Workflow Language](https://www.commonwl.org/) and Python. A Docker 
-[container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) is available to simplify deployment.
+[Common Workflow Language (CWL)](https://www.commonwl.org/) and Python. 
+CWL is executed by a locally modified [Toil](https://github.com/DataBiosphere/toil) distributed workflow engine.
+A Docker [container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) is available to simplify deployment.
+The software integrates the locally modified versions of [ARIBA](https://github.com/sanger-pathogens/ariba) and 
+[Pilon](https://github.com/broadinstitute/pilon). [BBTools](https://jgi.doe.gov/data-and-tools/bbtools/) package is used 
+in multiple places of the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
+of viral datasets.
 
 ## Author
 
@@ -34,7 +39,7 @@ GPLv3. See also COPYING file that accompanies the source code.
 
 ## Citation
 
-To learn about the motivation and the algorithm please see the manuscript:
+To learn about the motivation, algorithm and implementation please see the manuscript:
 bioRxiv URL
 
 If you find this software useful, please cite the manuscript.
