@@ -205,13 +205,14 @@ the sample IDs.
 When specifying path to the data subdirectory in the NGS-MSTB `Generate Manifest...` Galaxy
 tool, the **path should be given as relative to the fixed root path `/seqstore` inside the container**.
 
-This is easier to demonstrate through this **key** example:
+This is easier to demonstrate through this **key example**:
 
 
-Let us assume that on your host machine the FASTQ files are located under
-a subdirectory `/path/to/seqstore/reads/my_sequencing_run1`, and their names end
-in `.fastq.gz` Then, in the `Generate Manifest...` tool, you would supply:
-`data/my_sequencing_run1/*.fastq.gz`.
+Let us assume that on your host machine a batch of FASTQ files that you want to assemble 
+is located under a subdirectory `/path/to/seqstore/reads/my_sequencing_run1`, and their names end
+in `.fastq.gz`. You bind-mounted your entire read store with a Docker parameter
+`-v "/path/to/seqstore/reads":"/seqstore/data"`.  Then, in the `Generate Manifest...` 
+tool, you should supply: `data/my_sequencing_run1/*.fastq.gz`.
 
 
 NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
