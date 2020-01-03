@@ -155,9 +155,10 @@ MGS-MSTB needs two types of externally provided data files:
 #### FASTQ read files
 
 The FASTQ files should be named in a consistent pattern to allow configuring
-a regular expression for extracting sample IDs. These IDs will be used throughout
+the regular expressions for extracting sample IDs and establishing correct pairing
+between forward and reverse read files. The extracted sample IDs will be used throughout
 the pipeline to name rows in various output tables and to name the assembly
-contigs in the output FASTA files. One example of the file naming convention is 
+contigs in the output FASTA files. An example of one file naming convention is 
 `SMA1396654_S1_L001_R1_001.fastq.gz` for the forward and 
 `SMA1396654_S1_L001_R2_001.fastq.gz` for the reverse reads where 
 `SMA1396654` is the sample ID. The inline Help
