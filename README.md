@@ -217,9 +217,9 @@ tool, you should supply: `data/my_sequencing_run1/*.fastq.gz`.
 
 NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
 as a security precaution in order to prevent the Web users from accessing arbitrary paths
-inside the running container. The built-in example FASTQ files are located under 
-`seqstore/test_data` so that they would not clash with your own files bind-mounted
-under `seqstore/data`.
+inside the running container. The built-in example FASTQ files in the container are located under 
+`/seqstore/test_data` so that they would not clash with your own files bind-mounted
+under `/seqstore/data`.
 
 #### FASTA reference files
 
