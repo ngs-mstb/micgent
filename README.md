@@ -166,43 +166,57 @@ in the NGS-MSTB `Generate Manifest...` Galaxy tool explains how to tune the tool
 parameters in order to accomodate a wide variety of possible file naming patterns. 
 
 Let us assume that you have placed the FASTQ files under some directory named 
-`/path/to/seqstore/data` on the host file system where you start your Docker container.
+`/path/to/seqstore/reads` on the host file system where you start your Docker container.
 
 Then, you should bind-mount this directory under a specific location 
-`/seqstore/data` in the container:
+`/seqstore/data` in the container. 
 
 ```
 docker run --rm -d -p 8080:80 --name ngs-mstb \
--v "/path/to/seqstore/data":"/seqstore/data" \
+-v "/path/to/seqstore/reads":"/seqstore/data" \
 -v "/host/directory/path":"/export" \
 -e GALAXY_CONFIG_SINGLE_USER=admin_ge@ngs-mstb.nowhere ngsmstb/ngs-mstb:latest
 ```
+While you should always use this fixed `/seqstore/data` location after the `:`
+in the bind-mount argument, the actual location of your files on the host OS
+(the string before the `:`) can be any path.
 
-The container will only need read-only access to that location. **Note**:
+The net result of setting this Docker parameter is that the NGS-MSTB software running
+inside the container will see all files from `/path/to/seqstore/reads` directory on the
+host machine to appear under `/seqstore/data` directory in the container.
+
+The container will only need read-only access to the FASTQ files. **Note**:
 the pipeline in the container will be executing as user `galaxy` that
 has user ID (UID) 1450 and the same group ID (GID). You should either
 create a user/group with the same UID/GID and give read and directory
 execute permissions to either user or group to all files under your 
-`/path/to/seqstore/data`, or make `/path/to/seqstore/data` readable by all
+`/path/to/seqstore/reads`, or make `/path/to/seqstore/reads` readable by all
 users (if that is admissible for you security-wise). The latter can be
 done with the following command on Linux or MacOS:
-`chmod -R o+rX "/path/to/seqstore/data"`. Replace `/path/to/seqstore/data` everywhere in these instructions with your actual absolute path.
+`chmod -R o+rX "/path/to/seqstore/reads"`. Replace `/path/to/seqstore/reads` everywhere 
+in these instructions with your actual absolute path.
 
 Pairs of FASTQ files across multiple samples can be spread across several subdirectories
-under `/path/to/seqstore/data` - please see the Help lines in the 
-manifest builder tool in NGS-MSTB Galaxy container. The Help describes both
+under `/path/to/seqstore/reads` - please see the inline Help of the NGS-MSTB  
+`Generate Manifest...` Galaxy tool. The Help describes both
 multi-directory search patterns and the regular expressions for extracting
 the sample IDs.
 
-When specifying path to the data subdirectory in the NGS-MSTB manifest building
+When specifying path to the data subdirectory in the NGS-MSTB `Generate Manifest...` Galaxy
 tool, the **path should be given as relative to the fixed root path `/seqstore` inside the container**.
 
-This is easier to demonstrate through the example:
+This is easier to demonstrate through this **key** example:
+
 
 Let us assume that on your host machine the FASTQ files are located under
-a subdirectory `/path/to/seqstore/data/my_sequencing_run1`, and their names end
-in `.fastq.gz` Then, in the manifest tool, you would supply:
+a subdirectory `/path/to/seqstore/reads/my_sequencing_run1`, and their names end
+in `.fastq.gz` Then, in the `Generate Manifest...` tool, you would supply:
 `data/my_sequencing_run1/*.fastq.gz`.
+
+
+NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
+as a security precaution in order to prevent the Web users from accessing arbitrary paths
+inside the running container.
 
 #### FASTA reference files
 
