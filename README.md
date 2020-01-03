@@ -273,7 +273,7 @@ further modify the behaviour of our derived image.
 
 ## Automated testing suite
 
-The software includes a testing suite that is composed both from unit tests and integration tests.
+The software includes a testing suite that is composed from both unit tests and integration tests.
 The integration tests include checks for determinism. Those are implemented by running the same
 set of samples in multiple replicates and in several batches, and then comparing outputs for complete
 identity across replicates and batches.
