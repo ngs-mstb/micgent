@@ -162,7 +162,7 @@ contigs in the output FASTA files. An example of one file naming convention is
 `SMA1396654_S1_L001_R1_001.fastq.gz` for the forward and 
 `SMA1396654_S1_L001_R2_001.fastq.gz` for the reverse reads where 
 `SMA1396654` is the sample ID. The inline Help
-in the NGS-MSTB "Generate Manifest..." Galaxy tool explains how to tune the tool 
+in the NGS-MSTB `Generate Manifest...` Galaxy tool explains how to tune the tool 
 parameters in order to accomodate a wide variety of possible file naming patterns. 
 
 Let us assume that you have placed the FASTQ files under some directory named 
