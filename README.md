@@ -213,7 +213,8 @@ Let us assume that on your host machine a batch of FASTQ files that you want to 
 is located under a subdirectory `/path/to/seqstore/reads/my_sequencing_run1`, and their names end
 in `.fastq.gz`. You bind-mounted your entire read store with a Docker parameter
 `-v "/path/to/seqstore/reads":"/seqstore/data"`.  Then, in the `Generate Manifest...` 
-tool, you should supply: `data/my_sequencing_run1/*.fastq.gz`.
+tool, you should supply: `data/my_sequencing_run1/*.fastq.gz`. Notice that the latter path is
+a relative one - it starts with `data` rather than `/data`.
 
 
 NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
