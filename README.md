@@ -196,6 +196,7 @@ execute permissions to either user or group to all files under your
 users (if that is admissible for you security-wise). The latter can be
 done with the following command on Linux or MacOS:
 `chmod -R o+rX "/path/to/seqstore/reads"`. 
+
 Pairs of FASTQ files across multiple samples can be spread across several subdirectories
 under `/path/to/seqstore/reads` - please see the inline Help of the NGS-MSTB  
 `Generate Manifest...` Galaxy tool. The Help describes both
