@@ -26,7 +26,7 @@ CWL is executed by a locally modified [Toil](https://github.com/DataBiosphere/to
 A Docker [container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) is available to simplify deployment.
 The software integrates the locally modified versions of [ARIBA](https://github.com/sanger-pathogens/ariba) and 
 [Pilon](https://github.com/broadinstitute/pilon). [BBTools](https://jgi.doe.gov/data-and-tools/bbtools/) package is used 
-in multiple places of the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
+in multiple places inside the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
 of viral datasets.
 
 ## Author
