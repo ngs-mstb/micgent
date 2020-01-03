@@ -166,7 +166,9 @@ in the NGS-MSTB `Generate Manifest...` Galaxy tool explains how to tune the tool
 parameters in order to accomodate a wide variety of possible file naming patterns. 
 
 Let us assume that you have placed the FASTQ files under some directory named 
-`/path/to/seqstore/reads` on the host file system where you start your Docker container.
+`/path/to/seqstore/reads` on the host file system where you start your Docker container. 
+Replace `/path/to/seqstore/reads` everywhere in these instructions with your actual absolute path.
+
 
 Then, you should bind-mount this directory under a specific location 
 `/seqstore/data` in the container. 
@@ -193,9 +195,7 @@ execute permissions to either user or group to all files under your
 `/path/to/seqstore/reads`, or make `/path/to/seqstore/reads` readable by all
 users (if that is admissible for you security-wise). The latter can be
 done with the following command on Linux or MacOS:
-`chmod -R o+rX "/path/to/seqstore/reads"`. Replace `/path/to/seqstore/reads` everywhere 
-in these instructions with your actual absolute path.
-
+`chmod -R o+rX "/path/to/seqstore/reads"`. 
 Pairs of FASTQ files across multiple samples can be spread across several subdirectories
 under `/path/to/seqstore/reads` - please see the inline Help of the NGS-MSTB  
 `Generate Manifest...` Galaxy tool. The Help describes both
