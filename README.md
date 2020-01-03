@@ -80,9 +80,11 @@ If you are increasing the hardware resources in order to process your data faste
 
 In your Web browser, open the URL `localhost:8080`. If you started the container on a remote machine, replace `localhost` in the URL with the DNS name of that machine. You can also use a different port instead of `8080` both in the `docker run` command and in the URL. The recommended Web browser is Chrome, Firefox or other standards-complying browser.
 
-The Galaxy instance inside the container will take about a minute to become fully operational - you might see `Connection refused` when you first type the URL and have to refresh the page a couple of times.
+The Galaxy instance inside the container will take about a minute to become fully operational - you might see `Connection refused` when you first type the URL and have to refresh the page a couple of times. Eventually, you will see the Galaxy user interface (UI) in your browser window. 
 
-Eventually, you will see the Galaxy user interface (UI) in your browser window. Follow the links at the center to take the interactive tours of executing the example of assembling several complete genomes of Respiratory Syncytial Virus (RSV) and reviewing the resulting Web report. All necessary example datasets are included in the container.
+### Assemble and review the example datasets:
+
+Follow the links at the center of the Galaxy front page to take the interactive tours of executing the example of assembling several complete genomes of Respiratory Syncytial Virus (RSV) and reviewing the resulting Web report. All necessary example datasets are included in the container.
 
 The RSV assembly example from the tour will take about 1.5 hour to run on four cores of a modern 
 CPU. If you are running it on a laptop or other personal workstation, you might want to check 
