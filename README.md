@@ -27,7 +27,7 @@ A Docker [container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) 
 The software integrates the locally modified versions of [ARIBA](https://github.com/sanger-pathogens/ariba) and 
 [Pilon](https://github.com/broadinstitute/pilon). [BBTools](https://jgi.doe.gov/data-and-tools/bbtools/) package is used 
 in multiple places inside the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
-of viral datasets.
+of viral datasets. [Minimap2](https://github.com/lh3/minimap2) is used for aligning assembly contigs to the reference.
 
 ## Author
 
