@@ -157,7 +157,12 @@ MGS-MSTB needs two types of externally provided data files:
 The FASTQ files should be named in a consistent pattern to allow configuring
 a regular expression for extracting sample IDs. These IDs will be used throughout
 the pipeline to name rows in various output tables and to name the assembly
-contigs in the output FASTA files.
+contigs in the output FASTA files. One example of the file naming convention is 
+`SMA1396654_S1_L001_R1_001.fastq.gz` for the forward and 
+`SMA1396654_S1_L001_R2_001.fastq.gz` for the reverse reads where 
+`SMA1396654` is the sample ID. The inline Help
+in the NGS-MSTB "Generate Manifest..." Galaxy tool explains how to tune the tool 
+parameters in order to accomodate a wide variety of possible file naming patterns. 
 
 Let us assume that you have placed the FASTQ files under some directory named 
 `/path/to/seqstore/data` on the host file system where you start your Docker container.
