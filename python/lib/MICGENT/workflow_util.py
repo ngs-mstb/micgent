@@ -41,6 +41,7 @@ def iterate_sequence_run(input_dir,
                          out_file_sep="tab",
                          samp_id_nomatch="error",
                          from_dir=None,
+                         allowed_roots=None,
                          out_file_rejected=None,
                          require_friendly_paths=True,
                          allow_repeated_sample_id=False,
@@ -122,6 +123,9 @@ def iterate_sequence_run(input_dir,
     if not from_dir is None:
         assert util.is_rel_subdir(input_dir), "Input path {} must conform to a format of simple relative subdirectory".\
             format(input_dir)
+    
+    if not allowed_roots is None:
+        allowed_roots = [ util.absrealpath(_) for _ in util.glob_files(files_globs=allowed_roots) ]
 
     samp_id_extractor_str = samp_id_extractor
     samp_id_extractor = make_samp_id_extractor(samp_id_extractor)
@@ -213,6 +217,10 @@ def iterate_sequence_run(input_dir,
                             break
                     else:
                         raise ValueError("Did not find forward and reverse file name patterns: {}".format(samp_seqfiles))
+                if not allowed_roots is None:
+                    for f in (samp_seqfiles + [samp_rec["samp_dir"]]):
+                        assert util.is_real_subdir_any(f,allowed_roots,_upper_prepared=True),\
+                            "Real path of {} is outside of allowed roots {}".format(f,allowed_roots)
                 if to_abspath:
                     samp_seqfiles = [os.path.abspath(_) for _ in samp_seqfiles]
                     samp_rec["samp_dir"] = os.path.abspath(samp_rec["samp_dir"])
@@ -283,11 +291,17 @@ def load_manifest(manifest,sep="\t",dtype={"SampleID":str,"SeqID":str, "SeqID_RA
     dtype = dtype.copy()
     return pd.read_table(manifest,dtype=dtype,sep=sep,*l,**kw)
 
-def manifest_to_cwl(manifest,cwl,datadir=None,annot_sep="\t",require_friendly_paths=True):
+def manifest_to_cwl(manifest,cwl,datadir=None,annot_sep="\t",require_friendly_paths=True,
+    allowed_roots=None):
     from ruamel import yaml
     import pandas as pd
+    
+    if not allowed_roots is None:
+        allowed_roots = [ util.absrealpath(_) for _ in util.glob_files(files_globs=allowed_roots) ]
+
     df = pd.read_table(manifest,sep=annot_sep)
-    def create_cwl_rec(row,datadir=None):
+    
+    def create_cwl_rec(row,datadir=None,allowed_roots=None):
         file1 = row.file1
         file2 = row.file2
         if datadir:
@@ -298,6 +312,12 @@ def manifest_to_cwl(manifest,cwl,datadir=None,annot_sep="\t",require_friendly_pa
         if require_friendly_paths:
             for f in (file1,file2):
                 util.assert_path_unix_friendly(f)
+
+        if not allowed_roots is None:
+            for f in (file1,file2):
+                assert util.is_real_subdir_any(f,allowed_roots,_upper_prepared=True),\
+                    "Real path of {} is outside of allowed roots {}".format(f,allowed_roots)
+
         out = {}
         out['file1'] = {}
         out['file1']['class'] = 'File'
@@ -311,7 +331,7 @@ def manifest_to_cwl(manifest,cwl,datadir=None,annot_sep="\t",require_friendly_pa
 
         return out
 
-    res = [create_cwl_rec(row,datadir=datadir) for row in df.itertuples()]
+    res = [create_cwl_rec(row,datadir=datadir,allowed_roots=allowed_roots) for row in df.itertuples()]
     with util.open_text_py23(cwl,'w') as out:
         out.write(yaml.dump(res))
 

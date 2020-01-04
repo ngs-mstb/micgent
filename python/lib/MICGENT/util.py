@@ -149,6 +149,30 @@ def is_rel_subdir(path):
     It should not be an absolute path, and should not have any .. or . components."""
     return (not (".." in path.split("/") or os.path.isabs(path))) and path==os.path.relpath(path)
 
+def absrealpath(path):
+    return abspath(os.path.realpath(path))
+
+def is_real_subdir(lower,upper,_lower_prepared=False,_upper_prepared=False):
+    """Check that path `lower` is really a subdirectory of path `upper`.
+    This resolves symlinks. The main application is to prevent escapes
+    through symlinks when `lower` is supposed to be restricted to be under `upper`.
+    """
+    if not _lower_prepared:
+        lower = absrealpath(lower)
+    if not _upper_prepared:
+        upper = absrealpath(upper)
+    return os.path.commonpath([lower,upper]) == upper
+
+def is_real_subdir_any(lower,uppers,_upper_prepared=False):
+    """Iterate is_real_subdir over multiple upper dirs"""
+    lower = absrealpath(lower)
+    for upper in uppers:
+        if is_real_subdir(lower,upper,
+            _lower_prepared=True,
+            _upper_prepared=_upper_prepared):
+            return True
+    return False
+
 def makedir(path):
     """Make a directory if it does not already exist, creating intermediate subdirectories."""
     if not os.path.isdir(path):

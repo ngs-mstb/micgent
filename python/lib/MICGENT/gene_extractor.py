@@ -357,6 +357,8 @@ def _cwl_file(path,to_abspath=True):
 @argh.arg("--cwl-inputs",help="The initial workflow inputs file. Missing keys will be populated from other arguments or defaults")
 @argh.arg("--datadir",help="Optional top directory of the sequence files in the manifest. "
                            "If missing, manifest should list absolute paths")
+@argh.arg("--allowed-roots",help="Optional comma-separated list of directories that are allowed roots of the sequence files in the manifest. "
+                           "If provided, each manifest file should be located under one of those.")
 @argh.arg("--micgent-data",help="Directory with MICGENT database files. Required if adapter and spikes files are not present in "
     "the --cwl-inputs")
 @argh.arg("--assembly-policy",help="Sets default values for several parameters (unless those are defined directly) "
@@ -369,6 +371,7 @@ def _cwl_file(path,to_abspath=True):
 @argh.arg("--sig-inp-key",help="Key to use when computing signatures of the input files. It has to be kept constant across re-runs for signature comparisons.")
 def run_extraction_wf(cwl_inputs=None,
                       datadir="",
+                      allowed_roots=None,
                       micgent_data=None,
                       assembly_policy=None,
                       prepareref_tgz=None,
@@ -468,7 +471,7 @@ def run_extraction_wf(cwl_inputs=None,
     manifest = _set_file('manifest',manifest)
 
     samples = os.path.join(outdir,"gene_extractor_samples.yaml")
-    workflow_util.manifest_to_cwl(manifest,samples,datadir=datadir)
+    workflow_util.manifest_to_cwl(manifest,samples,datadir=datadir,allowed_roots=allowed_roots)
 
     prepareref_tgz = _set_file('prepareref_tgz',prepareref_tgz)
 
