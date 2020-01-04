@@ -202,7 +202,7 @@ def assert_path_unix_friendly(path):
 def assert_id_friendly(x,strictness="file_system_alpha"):
     assert strictness in ("file_system_alpha"), "Unimplemented strictness value: {}".format(strictness)
     if strictness == "file_system_alpha":
-        if not (x[:1].isalpha() and is_path_unix_friendly(x)):
+        if not (x[:1].isalpha() and is_path_unix_friendly(x) and not '@' in x):
             raise ValueError("ID string '{}' should start with a letter and contain only symbols in the range: '{}'".\
                              format(x, path_unix_friendly_chars()))
 
