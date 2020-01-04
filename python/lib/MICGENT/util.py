@@ -178,7 +178,7 @@ def split_path_all(path):
             allparts.insert(0, parts[1])
     return allparts
 
-_path_unix_friendly_chars_strictest = "-_.0-9a-zA-Z"
+_path_unix_friendly_chars_strictest = "-_.0-9a-zA-Z@"
 _rx_not_path_unix_friendly_chars_strictest = re.compile("[^{}]".\
                                                     format(_path_unix_friendly_chars_strictest))
 
