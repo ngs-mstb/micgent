@@ -54,8 +54,7 @@ Currently, the dynamic Web report that NGS-MSTB generates will load several open
 
 This assumes that you already have made some system operational on the host machine allowing you to run Docker containers. Our examples use Docker commands entered from a Linux terminal. You can easily adapt the commands to a different container execution system such as Redhat Podman and/or different host operating system (MacOS or Windows). Most of our testing of the NGS-MSTB container has been done
 on a Linux VM with 64GB RAM and 16 CPU cores and Mac PowerBook Pro with 32GB RAM
-and 6 CPU cores (12 cores with hyperthreading). On the Mac, we tested under minimum resources of 10GB RAM and 4 CPU cores
-made available to the Docker Desktop.
+and 6 CPU cores (12 cores with hyperthreading). On the Mac, we tested under minimum resources of 10GB RAM and 4 CPU cores made available to the Docker Desktop.
 
 ### The minimum hardware resources
 
@@ -79,6 +78,13 @@ If you are increasing the hardware resources in order to process your data faste
 ### Interact with Galaxy:
 
 In your Web browser, open the URL `localhost:8080`. If you started the container on a remote machine, replace `localhost` in the URL with the DNS name of that machine. You can also use a different port instead of `8080` both in the `docker run` command and in the URL. The recommended Web browser is Chrome, Firefox or other standards-complying browser.
+
+**Note**: If you are running Docker on Windows 10 Home Edition, you are probably
+using the implementation called Docker Toolbox (a.k.a. `docker-machine`). In that
+case, in order to see Galaxy on `localhost:8080`, you will need to take an 
+additional configuration step that 
+[forwards port 8080 from the host OS to the port 8080 in the Docker VM](https://stackoverflow.com/a/45822356). Please still keep our `docker run` command above 
+with `-p 8080:80`.
 
 The Galaxy instance inside the container will take about a minute to become fully operational - you might see `Connection refused` when you first type the URL and have to refresh the page a couple of times. Eventually, you will see the Galaxy user interface (UI) in your browser window. 
 
@@ -118,13 +124,20 @@ command across three lines. You should remove this symbol if concatenating
 the command into a single line.
 
 In the command above, the placeholder `/host/directory/path` should be replaced with the actual absolute path to the existing directory on your 
-host machine. That directory should be empty when you first run this command and be located on a file system with enough free space. Galaxy will copy multiple files into that directory when it first starts. If you restart the container and use the same command again, Galaxy will notice the existing files and restore your previous session.
+host machine. That directory should be empty when you first run this command and be located on a file system with enough free space. Galaxy will stage multiple files into that directory when it first starts. Because of that copying process, it might take up to five minutes for the
+Galaxy UI to become available in the Web browser.
+
+If you restart the container and use the same command later, Galaxy will notice the existing files and restore your previous session including job histories and output datasets.
 
 **Note**: Your Docker installation will still need to have enough free space to keep the container image itself (about 6GB). If you try a lot of different containers, this space fills up quickly, which creates a common source of problems encountered while using Docker in general. The housekeeping commands
 such as `docker system prune` and `docker volume prune` in case of Docker 
 might help in such situations. You can also use these commands to clean up all space used by Docker
 after you are done with using the image for good and stopped the container with 
 `docker stop ngs-mstb`. *Note*: the `prune` command will remove all unused images and stopped containers, not just NGS-MSTB, so you should be careful with using it.
+**Note**: On hosts that use a VM under the hood to run Docker (MacOS, Windows), 
+you might have to additionally expose the location of the `/host/directory/path` 
+to the VM. For example, on Mac Docker Desktop this is done through 
+_Preferencies->File Sharing_ menu.
 
 ### Shutting down and freeing up space
 
