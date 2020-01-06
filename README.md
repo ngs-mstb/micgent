@@ -110,7 +110,7 @@ The Quick Start command above will use transient anonymous Docker volumes for bo
   system as the host operating system (OS). On Linux, the volumes might be on a relatively small separate partition that can 
   overfill easily.
 
-For the use beyond running the Quick Start example, you might want to supply a "bind-mount" that will make your outputs persist 
+<a name="host-export"></a>For the use beyond running the Quick Start example, you might want to supply a "bind-mount" that will make your outputs persist 
 across container restarts and allow using any location you want for the pipeline temporary data:
 
 ```
@@ -129,12 +129,12 @@ Galaxy UI to become available in the Web browser.
 
 If you restart the container and use the same command later, Galaxy will notice the existing files and restore your previous session including job histories and output datasets.
 
-**Note**: Your Docker installation will still need to have enough free space to keep the container image itself (about 6GB). If you try a lot of different containers, this space fills up quickly, which creates a common source of problems encountered while using Docker in general. The housekeeping commands
+**Note on space for the images**: Your Docker installation will still need to have enough free space to keep the container image itself (about 6GB). If you try a lot of different containers, this space fills up quickly, which creates a common source of problems encountered while using Docker in general. The housekeeping commands
 such as `docker system prune` and `docker volume prune` in case of Docker 
 might help in such situations. You can also use these commands to clean up all space used by Docker
 after you are done with using the image for good and stopped the container with 
 `docker stop ngs-mstb`. *Note*: the `prune` command will remove all unused images and stopped containers, not just NGS-MSTB, so you should be careful with using it.
-**Note**: On hosts that use a VM under the hood to run Docker (MacOS, Windows), 
+**<a name="docker-vm-file-sharing">Note on file sharing from Docker VM</a>**: On hosts that use a VM under the hood to run Docker (MacOS, Windows), 
 you might have to additionally expose the location of the `/host/directory/path` 
 to the VM. For example, on Mac Docker Desktop this is done through 
 _Preferencies->File Sharing_ menu.
@@ -212,6 +212,8 @@ users (if that is admissible for you security-wise). The latter can be
 done with the following command on Linux or MacOS:
 `chmod -R o+rX "/path/to/seqstore/reads"`. 
 
+**Note**: Check [this](#docker-vm-file-sharing) if you are running Docker on MacOS or Windows.
+
 Pairs of FASTQ files across multiple samples can be spread across several subdirectories
 under `/path/to/seqstore/reads` - please see the inline Help of the NGS-MSTB  
 `Generate Manifest...` Galaxy tool. The Help describes both
@@ -238,6 +240,46 @@ inside the running container. The built-in example FASTQ files in the container 
 `/seqstore/test_data` so that they would not clash with your own files bind-mounted
 under `/seqstore/data`.
 
+#### SFTP upload of FASTQ read files
+
+You might be running Docker container on a remote machine where you do not have your
+sequencing inputs already on a file system that you could bind-mount into the container. 
+In that case, you can upload your FASTQ files into the container using any SFTP client.
+The command below exposes a port `8022` on the host. The SFTP server
+already runs inside the container. Note also that we bind-mount a directory to
+[persist Galaxy datasets on the host](host-export). The SFTP server uses this location
+to store the uploaded files (under a subdirectory `ftp`). If you change the port in the
+`docker run` command, you need to change it accordingly when you access the SFTP server
+from your client. We assume that the DNS name of your remote host is `my-host`. You
+should replace it with the actual hostname.
+
+```
+docker run --rm -d -p 8080:80 -p 8022:22 --name ngs-mstb \
+-v "/host/directory/path":"/export" \
+-e GALAXY_CONFIG_SINGLE_USER=admin_ge@ngs-mstb.nowhere ngsmstb/ngs-mstb:latest
+```
+
+To upload files, you can use any SFTP client such as [Cyberduck](https://cyberduck.io/), 
+[FileZilla](https://filezilla-project.org/) or a command-line `sftp` and connect to
+your host `my-host`.
+
+**Important**: You should use the full Galaxy user email as the SFTP user name, including
+the components after the `@` symbol, for example, `admin_ge@ngs-mstb.nowhere`. Use the
+same [password](#def-password) that you used to log that user into Galaxy. 
+Specify the custom port `8022` in the connection dialog to override the default SFTP port 
+that is `22`.
+
+Example `sftp` command: `sftp -P 8022 admin_ge@ngs-mstb.nowhere@my-host`.
+
+Let us suppose that you uploaded your FASTQ files into a subdirectory `my_sequencing_run1` 
+in the SFTP server, and their names end in `.fastq.gz`. Then, in the `Generate Manifest...` 
+Galaxy tool, you should supply: `ftp/my_sequencing_run1/*.fastq.gz`. If you placed the same files
+directly under the SFTP server root directory outside of any subdirectories, you would
+use in Galaxy `ftp/*.fastq.gz`. *Note*: Inside the generated manifest, the Galaxy user
+email will get automatically inserted into the file paths like this 
+`ftp/admin_ge@ngs-mstb.nowhere/SMA1396654_S1_L001_R1_001.fastq.gz`. This is because internally,
+the SFTP server is configured to keep each user's files in separate spaces.
+
 #### FASTA reference files
 
 These should be uploaded into your Galaxy history through the Web
@@ -263,7 +305,7 @@ Replace each `your_unique_*` placeholder above with some secret string. The defa
 values of all those variables baked into the Docker image can be found inside the 
 `Dockerfile` in the `ngs-mstb-docker` repository or printed by inspecting the image
 with `docker inspect ngsmstb/ngs-mstb:latest`. In particular, default admin user 
-is `admin_ge@ngs-mstb.nowhere` with a password `NgsMstb20`.
+is `admin_ge@ngs-mstb.nowhere` with a <a name="def-password">default password</a> `NgsMstb20`.
 
 You can login as the admin user and access the standard Galaxy `Admin` menu to create additional users for a shared deployment scenario.
 
