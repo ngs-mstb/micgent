@@ -2,7 +2,8 @@
 
 This repository MICGENT is the main component of the NGS-MSTB system.
 Here we describe how to use the entire system that is comprised of
-multiple code repositories.
+multiple code repositories. If you want, you can jump directly into 
+[Quick Start](#quick-start).
 
 ## Description
 
@@ -134,6 +135,7 @@ such as `docker system prune` and `docker volume prune` in case of Docker
 might help in such situations. You can also use these commands to clean up all space used by Docker
 after you are done with using the image for good and stopped the container with 
 `docker stop ngs-mstb`. *Note*: the `prune` command will remove all unused images and stopped containers, not just NGS-MSTB, so you should be careful with using it.
+
 **<a name="docker-vm-file-sharing">Note on file sharing from Docker VM</a>**: On hosts that use a VM under the hood to run Docker (MacOS, Windows), 
 you might have to additionally expose the location of the `/host/directory/path` 
 to the VM. For example, on Mac Docker Desktop this is done through 
@@ -234,7 +236,7 @@ tool, you should supply: `data/my_sequencing_run1/*.fastq.gz`. Notice that the l
 a relative one - it starts with `data` rather than `/data`.
 
 
-NGS-MSTB restricts the allowed files paths to be relative to the `/seqstore` root
+NGS-MSTB restricts the allowed file paths to be relative to the `/seqstore` root
 as a security precaution in order to prevent the Web users from accessing arbitrary paths
 inside the running container. The built-in example FASTQ files in the container are located under 
 `/seqstore/test_data` so that they would not clash with your own files bind-mounted
@@ -245,13 +247,14 @@ under `/seqstore/data`.
 You might be running Docker container on a remote machine where you do not have your
 sequencing inputs already on a file system that you could bind-mount into the container. 
 In that case, you can upload your FASTQ files into the container using any SFTP client.
-The command below exposes a port `8022` on the host. The SFTP server
-already runs inside the container. Note also that we bind-mount a directory to
-[persist Galaxy datasets on the host](host-export). The SFTP server uses this location
+The command below exposes a port `8022` on the host for connecting the remote SFTP client. 
+The SFTP server
+already runs inside the container. Note that we still bind-mount a directory to
+[persist Galaxy datasets on the host](#host-export). The SFTP server uses this location
 to store the uploaded files (under a subdirectory `ftp`). If you change the port in the
 `docker run` command, you need to change it accordingly when you access the SFTP server
-from your client. We assume that the DNS name of your remote host is `my-host`. You
-should replace it with the actual hostname.
+from your client. We assume in this example that the DNS name of your remote host is `my-host`. 
+You should replace it with the actual hostname.
 
 ```
 docker run --rm -d -p 8080:80 -p 8022:22 --name ngs-mstb \
@@ -265,7 +268,7 @@ your host `my-host`.
 
 **Important**: You should use the full Galaxy user email as the SFTP user name, including
 the components after the `@` symbol, for example, `admin_ge@ngs-mstb.nowhere`. Use the
-same [password](#def-password) that you used to log that user into Galaxy. 
+[same password](#def-password) that you used to log that user into Galaxy. 
 Specify the custom port `8022` in the connection dialog to override the default SFTP port 
 that is `22`.
 
@@ -273,7 +276,8 @@ Example `sftp` command: `sftp -P 8022 admin_ge@ngs-mstb.nowhere@my-host`.
 
 Let us suppose that you uploaded your FASTQ files into a subdirectory `my_sequencing_run1` 
 in the SFTP server, and their names end in `.fastq.gz`. Then, in the `Generate Manifest...` 
-Galaxy tool, you should supply: `ftp/my_sequencing_run1/*.fastq.gz`. If you placed the same files
+Galaxy tool, you should supply: `ftp/my_sequencing_run1/*.fastq.gz`. 
+If you, instead, placed the same files
 directly under the SFTP server root directory outside of any subdirectories, you would
 use in Galaxy `ftp/*.fastq.gz`. *Note*: Inside the generated manifest, the Galaxy user
 email will get automatically inserted into the file paths like this 
