@@ -80,12 +80,14 @@ If you are increasing the hardware resources in order to process your data faste
 
 In your Web browser, open the URL `localhost:8080`. If you started the container on a remote machine, replace `localhost` in the URL with the DNS name of that machine. You can also use a different port instead of `8080` both in the `docker run` command and in the URL. The recommended Web browser is Chrome, Firefox or other standards-complying browser.
 
-**Note**: If you are running Docker on Windows 10 Home Edition, you are probably
+**Note Windows 10 Home Edition**: If you are running Docker locally on Windows 10 
+Home Edition, you are probably
 using the implementation called Docker Toolbox (a.k.a. `docker-machine`). In that
-case, in order to see Galaxy on `localhost:8080`, you will need to take an 
-additional configuration step that 
-[forwards port 8080 from the host OS to the port 8080 in the Docker VM](https://stackoverflow.com/a/45822356). Please still keep our `docker run` command above 
-with `-p 8080:80`.
+case, the Docker VM would be accessible at the address different from the
+`localhost`. Typically the address would be `192.168.99.100`. It can be checked
+with a command `docker-machine ip default`. You would have to use this address
+in all commands in this manual in place of the `localhost`.
+For example, you would access Galaxy in your browser at the URL `192.168.99.100:8080`.
 
 The Galaxy instance inside the container will take about a minute to become fully operational - you might see `Connection refused` when you first type the URL and have to refresh the page a couple of times. Eventually, you will see the Galaxy user interface (UI) in your browser window. 
 
