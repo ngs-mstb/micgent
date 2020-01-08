@@ -80,7 +80,7 @@ If you are increasing the hardware resources in order to process your data faste
 
 In your Web browser, open the URL `localhost:8080`. If you started the container on a remote machine, replace `localhost` in the URL with the DNS name of that machine. You can also use a different port instead of `8080` both in the `docker run` command and in the URL. The recommended Web browser is Chrome, Firefox or other standards-complying browser.
 
-**Note Windows 10 Home Edition**: If you are running Docker locally on Windows 10 
+**Note on Windows 10 Home Edition**: If you are running Docker locally on Windows 10 
 Home Edition, you are probably
 using the implementation called Docker Toolbox (a.k.a. `docker-machine`). In that
 case, the Docker VM would be accessible at the address different from the
