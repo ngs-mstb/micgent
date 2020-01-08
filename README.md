@@ -343,6 +343,17 @@ using the Docker Compose service definition. The latter will ensure that
 the container will get automatically restarted with the same configuration
 every time the host is rebooted.
 
+**Note on importing histories**: Our support for GCP includes built-in checks that the intermediate
+Galaxy datasets such as the manifest and the ARIBA reference pack have not been 
+modified by the analyst (through download, editing and re-upload sequence of
+steps).
+These checks are active in the tools all the time, even in non-GCP
+deployments. The current implementatiom has a side effect that 
+if the user imports an existing Galaxy history,
+the `Extract target genes...` tool will refuse to run with the manifest and
+the ARIBA pack that were already present in the imported history. Both will have to
+be rebuilt. The tools which build these datasets complete within seconds.
+
 ## Developing in-depth understanding of the NGS-MSTB Galaxy tools interface
 
 You can start with the interactive tours linked from the front page of
@@ -362,9 +373,9 @@ further modify the behaviour of our derived image.
 ## Automated testing suite
 
 The software includes a testing suite that is composed from both unit tests and integration tests.
-The integration tests include checks for determinism. Those are implemented by running the same
-set of samples in multiple replicates and in several batches, and then comparing outputs for complete
-identity across replicates and batches.
+The integration tests cover assembling various common and corner cases and 
+comparing against the expected outputs. They also include checks for determinism. Those are implemented by running the same
+set of samples in multiple replicates and in several batches, and then comparing outputs for complete identity across replicates and batches.
 
 The anonymized input sequencing reads used in the tests are available from 
 [Zenodo NGS-MSTB community page](https://zenodo.org/communities/ngs-mstb).
