@@ -66,11 +66,17 @@ and adjust these if necessary - **the default settings may be too tight for NGS-
 under Docker Desktop, these settings will be found under _Preferences -> Advanced_. You should make and apply any changes to Docker Desktop before running the Docker commands because the Docker VM will get 
 restarted and all running commands or containers terminated.
 
-See below in this text about the disk space requirements.
+See below in this text details about the disk space requirements.
 
 If you are increasing the hardware resources in order to process your data faster, make sure that you **increment cores and RAM proportionally**: for each four additional CPU cores, add eight GB of RAM.
 
 ### Quick Start
+
+**If you are using any non-Linux host OS, make sure that you configure the VM that runs Docker
+to use at least 10 GB of RAM, 4 CPU cores and have 10 GB of free disk space in the VM**. 
+All of those must be configured in the Docker Desktop preferences or in the Virtual Box VM settings of
+the `docker-toolbox`. The workflow will stall and never finish if it runs against the VM
+disk space limits.
 
 ### Start the container:
 
