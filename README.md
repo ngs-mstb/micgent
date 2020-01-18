@@ -75,8 +75,10 @@ If you are increasing the hardware resources in order to process your data faste
 **If you are using any non-Linux host OS, make sure that you configure the VM that runs Docker
 to use at least 10 GB of RAM, 4 CPU cores and have 10 GB of free disk space in the VM**. 
 All of those must be configured in the Docker Desktop preferences or in the Virtual Box VM settings of
-the `docker-toolbox`. The workflow will stall and never finish if it runs against the VM
-disk space limits.
+the `docker-toolbox`. **On Windows, make sure that you increase VM swap to at least 2 GB**. The workflow will stall and never finish if it runs against the VM
+disk space or swap limits.
+
+![Windows Docker Desktop Setting Dialog](docs/docker_desktop_resources_win.jpg)
 
 ### Start the container:
 
