@@ -1,1 +1,1 @@
-![](ngs-mstb-flowchart.png)
+![](ngs-mstb-workflow.png)
