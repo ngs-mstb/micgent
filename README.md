@@ -30,6 +30,8 @@ The software integrates the locally modified versions of [ARIBA](https://github.
 in multiple places inside the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
 of viral datasets. [Minimap2](https://github.com/lh3/minimap2) is used for aligning assembly contigs to the reference.
 
+You can view the high-level [flow chart](docs/ngs-mstb-workflow.png).
+
 ## Author
 
 Andrey Tovchigrechko `<andreyto AT gmail.com>`
@@ -64,7 +66,11 @@ the containers by default have access to all CPUs and RAM of the host. On Mac an
 run inside a VM, and the default Docker settings restrict the VM resource allocation. You should check 
 and adjust these if necessary - **the default settings may be too tight for NGS-MSTB**. For example, 
 under Docker Desktop, these settings will be found under _Preferences -> Advanced_. You should make and apply any changes to Docker Desktop before running the Docker commands because the Docker VM will get 
-restarted and all running commands or containers terminated.
+restarted and all running commands or containers terminated. 
+
+So far, we were unable to 
+make the workflow to run on the older Docker implementation on Windows called 
+`docker-toolbox`. **This means that you will not be able to run this on Windows Home Edition**.
 
 See below in this text details about the disk space requirements.
 
