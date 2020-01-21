@@ -42,10 +42,12 @@ GPLv3. See also COPYING file that accompanies the source code.
 
 ## Citation
 
-To learn about the motivation, algorithm and implementation please see the manuscript:
-bioRxiv URL
+The manuscript is currently under review:
 
-If you find this software useful, please cite the manuscript.
+A. Tovchigrechko, E. Aspinal, T. Slidel, H. Liu, B. Lu, A. Ruzin, R.J. Lebbink, H. Jin, M.E. Abram, M.T. Esser and D.E. Tabor, NGS-MSTB: Next Generation Sequencing Microbial Surveillance Toolbox for scalable de-novo assembly of viral genomes and bacterial genes.
+
+In the meantime, you can cite the software release DOI on Zenodo: 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3619526.svg)](https://doi.org/10.5281/zenodo.3619526)
 
 ## How to run - the overview
 
