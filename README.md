@@ -5,6 +5,8 @@ Here we describe how to use the entire system that is comprised of
 multiple code repositories. If you want, you can jump directly to 
 [running the NGS-MSTB as a Docker container](#how-to-run---docker).
 
+![screenshot-main](docs/ngs-mstb-screen.png)
+
 ## Description
 
 ### Summary 
