@@ -30,7 +30,7 @@ The software integrates the locally modified versions of [ARIBA](https://github.
 in multiple places inside the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
 of viral datasets. [Minimap2](https://github.com/lh3/minimap2) is used for aligning assembly contigs to the reference.
 
-You can view the high-level [flow chart](docs/ngs-mstb-workflow.png).
+You can view the high-level [flow chart](docs/ngs-mstb-flow.md).
 
 ## Author
 
