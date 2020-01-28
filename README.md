@@ -2,7 +2,8 @@
 
 This repository MICGENT is the main component of the NGS-MSTB system.
 Here we describe how to use the entire system that is comprised of
-multiple code repositories. If you want, you can jump directly to 
+multiple code repositories. If you want to skip the introduction, 
+you can jump directly to 
 [running the NGS-MSTB as a Docker container](#how-to-run---docker).
 
 ![screenshot-main](docs/ngs-mstb-screen.png)
@@ -34,9 +35,10 @@ of viral datasets. [Minimap2](https://github.com/lh3/minimap2) is used for align
 
 You can view the high-level [flow chart](docs/ngs-mstb-flow.md).
 
-## Author
+### Developer and maintainer
 
 Andrey Tovchigrechko `<andreyto AT gmail.com>`
+
 
 ## License
 
@@ -50,6 +52,12 @@ A. Tovchigrechko, E. Aspinal, T. Slidel, H. Liu, B. Lu, A. Ruzin, R.J. Lebbink, 
 
 In the meantime, you can cite the software release DOI on Zenodo: 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3619526.svg)](https://doi.org/10.5281/zenodo.3619526)
+
+## Published studies that used NGS-MSTB
+
+H. Liu, B. Lu, D.E. Tabor, A. Tovchigrechko, D. Wilkins, H. Jin, S.A. Madhi, N. Soofie, M.T. Esser and M.C. Nunes,
+Characterization of human respiratory syncytial virus (RSV) isolated from HIV-exposed-uninfected and unexposed infants in South Africa during 2015-2017,
+Accepted to Influenza and Other Respiratory Viruses.
 
 ## How to run - the overview
 
