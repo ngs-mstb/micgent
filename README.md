@@ -119,7 +119,10 @@ The Galaxy instance inside the container will take about a minute to become full
 
 ### Assemble and review the example datasets:
 
-Follow the links at the center of the Galaxy front page to take the interactive tours of executing the example of assembling several complete genomes of Respiratory Syncytial Virus (RSV) and reviewing the resulting Web report. All necessary example datasets are included in the container.
+Follow the links at the center of the Galaxy front page to take the interactive tours of executing the example of 
+assembling several complete genomes of Respiratory Syncytial Virus (RSV) and reviewing the resulting Web report. 
+The tours allow comparing the NGS-MSTB assemblies of several NGS replicates against the independently obtained 
+Sanger-based assemblies of the same genomes. All necessary example datasets are included in the container.
 
 The RSV assembly example from the tour will take about 1.5 hour to run on four cores of a modern 
 CPU. If you are running it on a laptop or other personal workstation, you might want to check 
