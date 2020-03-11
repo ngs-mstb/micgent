@@ -27,7 +27,7 @@ on the [Galaxy bioinformatics workbench](https://galaxyproject.org/), dynamic We
 with [IGV.js](https://github.com/igvteam/igv.js/) genome browser views and a distributed backend coded with 
 [Common Workflow Language (CWL)](https://www.commonwl.org/) and Python. 
 CWL is executed by a locally modified [Toil](https://github.com/DataBiosphere/toil) distributed workflow engine.
-A Docker [container](https://hub.docker.com/repository/docker/ngsmstb/ngs-mstb) is available to simplify deployment.
+A Docker [container](https://hub.docker.com/r/ngsmstb/ngs-mstb) is available to simplify deployment.
 The software integrates the locally modified versions of [ARIBA](https://github.com/sanger-pathogens/ariba) and 
 [Pilon](https://github.com/broadinstitute/pilon). [BBTools](https://jgi.doe.gov/data-and-tools/bbtools/) package is used 
 in multiple places inside the pipeline. [Spades](https://github.com/ablab/spades) is used as a key component in the assembly 
