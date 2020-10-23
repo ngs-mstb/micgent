@@ -55,9 +55,11 @@ In the meantime, you can cite the software release DOI on Zenodo:
 
 ## Published studies that used NGS-MSTB
 
-H. Liu, B. Lu, D.E. Tabor, A. Tovchigrechko, D. Wilkins, H. Jin, S.A. Madhi, N. Soofie, M.T. Esser and M.C. Nunes,
-Characterization of human respiratory syncytial virus (RSV) isolated from HIV-exposed-uninfected and unexposed infants in South Africa during 2015-2017,
-Accepted to Influenza and Other Respiratory Viruses.
+Liu, Hui, Bin Lu, David E. Tabor, Andrey Tovchigrechko, Deidre Wilkins, Hong Jin, Shabir A. Madhi, Nasiha Soofie, Mark T. Esser, and Marta C. Nunes. "Characterization of human respiratory syncytial virus (RSV) isolated from HIV‐exposed‐uninfected and HIV‐unexposed infants in South Africa during 2015‐2017." Influenza and Other Respiratory Viruses (2020) [https://doi.org/10.1111/irv.12727](https://doi.org/10.1111/irv.12727)
+
+David E. Tabor, Fiona Fernandes, Annefleur C. Langedijk, Deidre Wilkins, Robert Jan Lebbink, Andrey Tovchigrechko, Alexey Ruzin, Leyla Kragten-Tabatabaie, Hong Jin, Mark T. Esser, Louis J. Bont, Michael E. Abram, the INFORM-RSV Study Group, Global molecular epidemiology of RSV from the 2017-2018 INFORM-RSV study,
+Journal of Clinical Microbiology Oct 2020, JCM.01828-20; [https://doi.org/10.1128/jcm.01828-20](https://doi.org/10.1128/jcm.01828-20)
+
 
 ## How to run - the overview
 
