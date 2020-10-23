@@ -71,22 +71,20 @@ Currently, the dynamic Web report that NGS-MSTB generates will load several open
 
 ## How to run - Docker
 
-This assumes that you already have made some system operational on the host machine allowing you to run Docker containers. Our examples use Docker commands entered from a Linux terminal. You can easily adapt the commands to a different container execution system such as Redhat Podman and/or different host operating system (MacOS or Windows). Most of our testing of the NGS-MSTB container has been done
+This assumes that you already have made some system operational on the host machine allowing you to run Docker containers. Our examples use Docker commands entered from a Linux terminal. You can easily adapt the commands to a different container execution system such as Redhat Podman and/or different host operating system (MacOS). Most of our testing of the NGS-MSTB container has been done
 on a Linux VM with 64GB RAM and 16 CPU cores and Mac PowerBook Pro with 32GB RAM
 and 6 CPU cores (12 cores with hyperthreading). On the Mac, we tested under minimum resources of 10GB RAM and 4 CPU cores made available to the Docker Desktop.
 
 ### The minimum hardware resources
 
 The Docker containers should be able to use at least four CPU cores and 10 GB of RAM. On Linux hosts, 
-the containers by default have access to all CPUs and RAM of the host. On Mac and Windows, the containers 
+the containers by default have access to all CPUs and RAM of the host. On Mac, the containers 
 run inside a VM, and the default Docker settings restrict the VM resource allocation. You should check 
 and adjust these if necessary - **the default settings may be too tight for NGS-MSTB**. For example, 
 under Docker Desktop, these settings will be found under _Preferences -> Advanced_. You should make and apply any changes to Docker Desktop before running the Docker commands because the Docker VM will get 
 restarted and all running commands or containers terminated. 
 
-So far, we were unable to 
-make the workflow to run on the older Docker implementation on Windows called 
-`docker-toolbox`. **This means that you will not be able to run this on Windows Home Edition**.
+**So far, we were not able to execute the full assembly workflow in Docker on Windows**. On Windows, the workflow inevitably stalls with zero CPU usage and no tracable error messages despite all our attempts at adjusting the Docker resource parameters. This must be related to some subtle problems in the implementation of the Docker system itself on Windows OS. This might change in future versions of Docker or in Docker on Windows WSL 2. We will update this section if that happens. For now, **NGS-MSTB should be used only on Linux or Mac hosts**.
 
 See below in this text details about the disk space requirements.
 
@@ -97,10 +95,10 @@ If you are increasing the hardware resources in order to process your data faste
 **If you are using any non-Linux host OS, make sure that you configure the VM that runs Docker
 to use at least 10 GB of RAM, 4 CPU cores and have 10 GB of free disk space in the VM**. 
 All of those must be configured in the Docker Desktop preferences or in the Virtual Box VM settings of
-the `docker-toolbox`. **On Windows, make sure that you increase VM swap to at least 2 GB**. The workflow will stall and never finish if it runs against the VM
+the `docker-toolbox`. The workflow will stall and never finish if it runs against the VM
 disk space or swap limits.
 
-![Windows Docker Desktop Setting Dialog](docs/docker_desktop_resources_win.jpg)
+![Docker Desktop Setting Dialog](docs/docker_desktop_resources_win.jpg)
 
 ### Start the container:
 
@@ -109,15 +107,6 @@ disk space or swap limits.
 ### Interact with Galaxy:
 
 In your Web browser, open the URL `localhost:8080`. If you started the container on a remote machine, replace `localhost` in the URL with the DNS name of that machine. You can also use a different port instead of `8080` both in the `docker run` command and in the URL. The recommended Web browser is Chrome, Firefox or other standards-complying browser.
-
-**Note on Windows 10 Home Edition**: If you are running Docker locally on Windows 10 
-Home Edition, you are probably
-using the implementation called Docker Toolbox (a.k.a. `docker-machine`). In that
-case, the Docker VM would be accessible at the address different from the
-`localhost`. Typically the address would be `192.168.99.100`. It can be checked
-with a command `docker-machine ip default`. You would have to use this address
-in all commands in this manual in place of the `localhost`.
-For example, you would access Galaxy in your browser at the URL `192.168.99.100:8080`.
 
 The Galaxy instance inside the container will take about a minute to become fully operational - you might see `Connection refused` when you first type the URL and have to refresh the page a couple of times. Eventually, you will see the Galaxy user interface (UI) in your browser window. 
 
@@ -142,7 +131,7 @@ The Quick Start command above will use transient anonymous Docker volumes for bo
 - The file system where your Docker installation creates volumes should 
   have enough free space to hold the temporary pipeline data. The pipeline caches all intermediate output files during its run for 
   the ability to automatically retry  any failed workflow steps. This means that it will use a total of 10 GB at peak time in the case of the eight RSV genomes example running on four CPU cores. Higher degree of parallelism (more CPU cores in the container) will increase peak disk use because more transient work
-  files will coexist in the workflow at any given time. On Mac and Windows, Docker volumes typically reside on the same file 
+  files will coexist in the workflow at any given time. On Mac, Docker volumes typically reside on the same file 
   system as the host operating system (OS). On Linux, the volumes might be on a relatively small separate partition that can 
   overfill easily.
 
@@ -171,7 +160,7 @@ might help in such situations. You can also use these commands to clean up all s
 after you are done with using the image for good and stopped the container with 
 `docker stop ngs-mstb`. *Note*: the `prune` command will remove all unused images and stopped containers, not just NGS-MSTB, so you should be careful with using it.
 
-**<a name="docker-vm-file-sharing">Note on file sharing from Docker VM</a>**: On hosts that use a VM under the hood to run Docker (MacOS, Windows), 
+**<a name="docker-vm-file-sharing">Note on file sharing from Docker VM</a>**: On hosts that use a VM under the hood to run Docker (MacOS), 
 you might have to additionally expose the location of the `/host/directory/path` 
 to the VM. For example, on Mac Docker Desktop this is done through 
 _Preferencies->File Sharing_ menu.
@@ -249,7 +238,7 @@ users (if that is admissible for you security-wise). The latter can be
 done with the following command on Linux or MacOS:
 `chmod -R o+rX "/path/to/seqstore/reads"`. 
 
-**Note**: Check [this](#docker-vm-file-sharing) if you are running Docker on MacOS or Windows.
+**Note**: Check [this](#docker-vm-file-sharing) if you are running Docker on MacOS.
 
 Pairs of FASTQ files across multiple samples can be spread across several subdirectories
 under `/path/to/seqstore/reads` - please see the inline Help of the NGS-MSTB  
