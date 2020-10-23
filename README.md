@@ -60,6 +60,8 @@ Liu, Hui, Bin Lu, David E. Tabor, Andrey Tovchigrechko, Deidre Wilkins, Hong Jin
 David E. Tabor, Fiona Fernandes, Annefleur C. Langedijk, Deidre Wilkins, Robert Jan Lebbink, Andrey Tovchigrechko, Alexey Ruzin, Leyla Kragten-Tabatabaie, Hong Jin, Mark T. Esser, Louis J. Bont, Michael E. Abram, the INFORM-RSV Study Group, Global molecular epidemiology of RSV from the 2017-2018 INFORM-RSV study,
 Journal of Clinical Microbiology Oct 2020, JCM.01828-20; [https://doi.org/10.1128/jcm.01828-20](https://doi.org/10.1128/jcm.01828-20)
 
+Kurasawa, James H., Andrew Park, Carrie R. Sowers, Rebecca A. Halpin, Andrey Tovchigrechko, Claire L. Dobson, Albert E. Schmelzer, Changshou Gao, Susan D. Wilson, and Yasuhiro Ikeda. "Chemically-Defined, High-Density Insect Cell-Based Expression System for Scalable AAV Vector Production." Molecular Therapy-Methods & Clinical Development (2020) [https://doi.org/10.1016/j.omtm.2020.09.018](https://doi.org/10.1016/j.omtm.2020.09.018)
+
 
 ## How to run - the overview
 
