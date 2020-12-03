@@ -15,6 +15,7 @@ standard_library.install_aliases()
 from builtins import str
 from builtins import *
 import os, tarfile, json, glob, shutil
+import sys
 import contextlib
 import re
 import itertools
@@ -938,6 +939,37 @@ def import_name(name):
     else:
         obj = globals()[obj]
     return obj
+
+@contextlib.contextmanager
+def as_stream_cm(x,mode="r"):
+    """Convert argument to a file stream object.
+    
+    If a string, open with a given mode.
+    If None, return stdio or stdout depending on the mode.
+    Else retun as-is.
+    
+    This is a context manager. It will only auto-close streams that
+    it opened."""
+
+    ret = x
+    do_close = False
+    try:
+        if x is None:
+            if "r" in mode:
+                ret = sys.stdin
+            elif "w" in mode or "a" in mode:
+                ret = sys.stdout
+            else:
+                raise ValueError(f"Unknown file open mode: {mode}")
+        elif is_string(x):
+            ret = open(x,mode)
+            do_close = True
+        yield ret
+    finally:
+        if do_close:
+            ret.close()
+
+
 
 ## import package module and add argh entry points
 
