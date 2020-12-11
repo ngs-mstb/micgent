@@ -251,13 +251,31 @@ def bbduk_cmd(exe="bbduk.sh",statscolumns=5,ordered=True,tbo="t",copyundefined="
     args.update(kw)
     return bbtools_cmd(**args)
 
+def fastq_sort_by_ref_in_window_cmd(inp_ref="-", inp_que="-", out="-", window_size=100000, threads=4, use_pigz=True):
+    if out.endswith(".gz"):
+        if use_pigz and shutil.which("pigz"):
+            compr_cmd = f"pigz -p {threads} -c"
+        else:
+            compr_cmd = f"gzip -c"
+        compr_cmd = f" | {compr_cmd} > {out}"
+        out = "-"
+    else:
+        compr_cmd = ""
+    cmd = ("python -m MICGENT.local_sort_fastq fastq-sort-by-ref-in-window " 
+        "--inp-ref {inp_ref} "
+        "--inp-que {inp_que} "
+        "--out {out} "
+        "--window-size {window_size}").format(**locals())    
+    cmd += compr_cmd
+    return cmd
+
 def reformat_subsample_stdinp(exe="reformat.sh",sampleseed=123,
     inp="stdin.fq",
     threads=1, ram=1024, interleaved=True,
     samplerate=0.1,
     out=None,out2=None,
     **kw):
-    """Using Unix `tee`, divert a subset of reads from stdin into a file for QC.
+    """Using Unix `tee` and BASH 'temporary named pipes', divert a subset of reads from stdin into a file for QC.
     """
     args = locals().copy()
     del args["kw"]
@@ -267,6 +285,24 @@ def reformat_subsample_stdinp(exe="reformat.sh",sampleseed=123,
     cmd = "tee >(" + cmd_to_str(bbtools_cmd(**args)) + ")"
     return cmd
 
+def fork_stdinp(cmd):
+    """Using Unix `tee` and BASH 'temporary named pipes', pass stdin to stdout while running arbitrary command on stdin.
+    @param cmd string or list similar to input to subprocess.run. cmd should be reading from stdin.
+    @return string to concatenate with BASH pipe '|' with other shell commands
+    """
+    ## If needed, tee can redirect to multiple subcommands: tee >(cmd1) >(cmd2) | ...
+    cmd_ret = "tee >(" + cmd_to_str(cmd) + ")"
+    return cmd_ret
+
+def fork_seq_ids(out_file="seq.id",threads=4):
+    """Using Unix `tee` and BASH 'temporary named pipes', divert sequence IDs from stdin to a file and pass stdin to stdout.
+    
+    @param out_file name of output file with sequence IDs. If ends in .gz, it will be gzipped.
+    """
+    ##TODO: add seqkit seq ID extraction options (--only-id, --id-regexp)
+    assert out_file != "-", "Cannot write command results to stdout when passing stdinp to stdout already"
+    cmd = ["seqkit","seq","--name","--threads",threads,"--out-file",out_file]
+    return fork_stdinp(cmd)
 
 def clean_reads(inp_reads="stdin.fq.gz",
                 out_reads="stdout.fq.gz",
@@ -335,6 +371,11 @@ def clean_reads(inp_reads="stdin.fq.gz",
         stats_files = []
         cmd = cmd_to_str(bbtools_cmd(exe="reformat.sh", sampleseed=123, inp=inp_reads, inp2=inp_reads2,
             out="stdout.fq", interleaved=inp_ilv, ram=ram))
+        
+        seq_ids_before_bbduk = _file_name("seq_before_bbduk.id")
+        if deterministic:
+            cmd += " | " + fork_seq_ids(out_file=seq_ids_before_bbduk)
+                
         if inp_reads2:
             inp_ilv = True
 
@@ -342,7 +383,9 @@ def clean_reads(inp_reads="stdin.fq.gz",
             cmd += " | " + reformat_subsample_stdinp(interleaved=inp_ilv,
                 samplerate=out_qc_samplerate,
                 out=out_qc_before_reads,out2=out_qc_before_reads2)
+        seq_sort_window_size = 100000
         if clumpify:
+            seq_sort_window_size = 0 # prefetch the entire final FASTQ when sorting for determinism because clumpify reorders globally
             out_clump = _read_name_gz("clump")
             ## TODO: expose those dedup parameters that have to be changed by the user according to the instrument model
             ## https://www.biostars.org/p/225338/
@@ -356,7 +399,7 @@ def clean_reads(inp_reads="stdin.fq.gz",
         if filter_spikes:
             if not spikes_file:
                 spikes_file = "phix"
-            spikes_stats = _file_name("bbduk_clump","stats")
+            spikes_stats = _file_name("bbduk_spikes","stats")
             stats_files.append(spikes_stats)
             cmd += " | " + cmd_to_str(bbduk_cmd(ref=spikes_file,ktrim=False,k=31,mink=-1,hdist=1,tbo=False,
                 stats=spikes_stats,
@@ -392,6 +435,7 @@ def clean_reads(inp_reads="stdin.fq.gz",
             bb_kw = bbd_kw_last
         else:
             bb_kw = dict(out="stdout.fq")
+
         cmd += " | " + cmd_to_str(bbduk_cmd(ref=adapter_file,ktrim="r",rcomp="t",hdist=1,tpe="t",ftm=5,
             stats=ada_r_stats,
             threads=threads,interleaved=inp_ilv, ram=ram, inp="stdin.fastq",
@@ -426,22 +470,13 @@ def clean_reads(inp_reads="stdin.fq.gz",
                     **out_kw_last))
 
         if deterministic:
-            ## sortbyname.sh cannot split interleaved reads, so we need to add a reformat.sh step in such case
-            ## sortbyname.sh <= v.38.* hangs with an exception when using temporary sorting files
-            ## on interleaved inputs. We need to give it enough RAM and disable temp files.
-            ## Temp files seem to work OK on a local FS on Mac, but fail on NFS on Linux
-            sort_ram = max(1024*4,ram)
-            if not inp_ilv:
-                cmd += " | " + cmd_to_str(bbtools_cmd(exe="sortbyname.sh",inp="stdin.fastq",
-                    threads=threads,interleaved=inp_ilv, allowtemp=False, ram=sort_ram,
-                    **out_kw_last))
-            else:
-                cmd += " | " + cmd_to_str(bbtools_cmd(exe="sortbyname.sh",inp="stdin.fq",
-                    threads=threads,interleaved=inp_ilv, allowtemp=False, ram=sort_ram,
-                    out="stdout.fq"))
-                cmd += " | " + cmd_to_str(bbtools_cmd(exe="reformat.sh", sampleseed=123, inp="stdin.fq",
-                    interleaved=inp_ilv, ram=1024,
-                    **out_kw_last))
+            cmd += " | " + cmd_to_str(fastq_sort_by_ref_in_window_cmd(inp_ref=seq_ids_before_bbduk,
+                window_size=seq_sort_window_size,
+                threads=threads))
+            cmd += " | " + cmd_to_str(bbtools_cmd(exe="reformat.sh", sampleseed=123, inp="stdin.fq",
+                interleaved=inp_ilv, ram=1024,
+                **out_kw_last))
+        
         run_step(cmd,
                  descr="Clean reads",
                  stdout=stdout, stderr=stderr, args=locals(),

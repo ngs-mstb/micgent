@@ -51,9 +51,9 @@ def test_fastq_sort_by_ref_in_window_cli():
     out_fq_fn = "interleaved.sorted.fq"
     cmd = ("cat {inp_que_fn} | python -m MICGENT.local_sort_fastq fastq-sort-by-ref-in-window " 
         "--inp-ref {inp_ref_fn} "
+        "--inp-que - "
         "--out {out_fq_fn} "
         "--window-size 4").format(**locals()) 
-    #check_call(shlex.split(cmd))
     check_call(cmd,shell=True)
     with open(out_fq_fn,"r") as inp_out:
         out_body_str = inp_out.read()

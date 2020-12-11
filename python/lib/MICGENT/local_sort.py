@@ -1,4 +1,5 @@
 """Sort query by reference when reodering is confined to a window"""
+import sys
 
 def sort_by_ref_in_window(inp_ref,inp_que,window_size=1000):
     """Reorder inp_que iterator by inp_ref within window_size.
@@ -11,13 +12,17 @@ def sort_by_ref_in_window(inp_ref,inp_que,window_size=1000):
     Inputs:
     - inp_ref - iterator of IDs
     - inp_que - iterator of (ID, body) tuples for each element
+    - window_size - limits the number of inp_que elements held in
+      RAM at any given time. Value of 0 is treated as unlimited,
+      in which case in the current implementation the entire inp_que
+      in prefetched into a Python dict.
 
     Yield:
     - (ID, body) tuples from inp_que
 
     Complexity:
-    - Time is linear in both inp_que and inp_ref
-    - Memory is capped by window_size inp_que elements
+    - Time is linear in both inp_que and inp_ref if window_size is fixed
+    - Memory is capped by window_size inp_que elements unless window_size==0
 
     Exceptions:
     - Raise ValueError with a dict containing any remaining
@@ -31,6 +36,16 @@ def sort_by_ref_in_window(inp_ref,inp_que,window_size=1000):
       differences should be localized within a certain window
       around each position in the original input sequence ordering.
     """
+    ##TODO: optimize memory use for the corner case of window_size==0:
+    ## - use initial window_size and max_window_size, and
+    ##   fetch above window_size only on encountering the first
+    ##   ref element missing from the initial (current) window_size.
+    ##   This will not give much when elements from the ref are not
+    ##   present in que.
+    ## - create a wrapper function that calls this one in multiple
+    ##   passes on a split que and then merges
+    if window_size == 0:
+        window_size = sys.maxsize
     d_que = dict()
     ## prefetch windows_size of query
     for i_que in range(window_size):
@@ -45,7 +60,6 @@ def sort_by_ref_in_window(inp_ref,inp_que,window_size=1000):
     for el_id in inp_ref:
         el_body = d_que.get(el_id,None)
         if el_body is not None:
-            print(el_id)
             yield (el_id,el_body)
             del d_que[el_id]
             try:

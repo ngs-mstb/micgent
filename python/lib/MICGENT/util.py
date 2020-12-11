@@ -940,12 +940,16 @@ def import_name(name):
         obj = globals()[obj]
     return obj
 
+def is_stdio_fn(x):
+    """Return true if the argument designates stdio stream request (None or the '-' symbol)"""
+    return (x is None) or (is_string(x) and x == "-")
+
 @contextlib.contextmanager
 def as_stream_cm(x,mode="r"):
     """Convert argument to a file stream object.
     
-    If a string, open with a given mode.
-    If None, return stdio or stdout depending on the mode.
+    If a string and not '-', open with a given mode.
+    If None or '-', return stdio or stdout depending on the mode.
     Else retun as-is.
     
     This is a context manager. It will only auto-close streams that
@@ -954,7 +958,7 @@ def as_stream_cm(x,mode="r"):
     ret = x
     do_close = False
     try:
-        if x is None:
+        if is_stdio_fn(x):
             if "r" in mode:
                 ret = sys.stdin
             elif "w" in mode or "a" in mode:
