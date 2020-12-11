@@ -7,17 +7,20 @@ shift
 if [[ "$quick"z == "quick"z ]]; then
     large_data=""
 else
+    deploy_root=$(cd "$deploy_root" && pwd)
     large_data="--large-test-data=$deploy_root/micgent_large_test_data"
 fi
-[ -n "$deploy_root" ] || exit 1
+[ -d "$deploy_root" ] || exit 1
 pytest --run-slow \
     --ignore test_run \
     --conda-env-ngs-mstb=ngs-mstb \
     --micgent-data=$deploy_root/micgent_db \
     --extra-config=$this_dir/run_tests_gene_extractor.yaml \
     --log-cli-level=DEBUG \
-    --log-file=test_std.log \
+    --log-file=test_run/test_std.log \
     "$large_data"
+#    -k test_fastq_sort_by_ref_in_window_cli \
+#    -k 'test_clean_reads'
 #    -k test_run_extractor_determinism_rsv_1
 #    -k test_run_extractor_small_rsv
 #    --huge-test-data=$deploy_root/micgent_huge_test_data \
