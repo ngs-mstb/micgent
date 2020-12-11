@@ -143,6 +143,15 @@ def asm_iter(inp_reads,workdir,threads,stdout,stderr,args,norm_target,minlen,pre
         _read_names = dh_work.make_paired_files_func(base="read",ext="fastq",n=2)
         _file_name = dh_work.make_file
 
+        def sort_reads_cond(inp_reads, out_sfx, base, 
+            threads=threads,stdout=stdout,stderr=stderr, deterministic=deterministic):
+            if deterministic:
+                out_reads = _read_names(out_sfx)
+                sort_reads(inp_reads,out_reads,threads=threads,stdout=stdout,stderr=stderr,base=base)
+            else:
+                out_reads = inp_reads
+            return out_reads
+
         trim_uns_reads = _read_names("tr_uns")
         run_step("bbduk.sh -eoom -Xmx4g  -Xms2g overwrite=true in='{inp_reads[0]}' in2='{inp_reads[1]}' "
                  "out={trim_uns_reads[0]} out2={trim_uns_reads[1]} threads={threads} "
@@ -151,8 +160,7 @@ def asm_iter(inp_reads,workdir,threads,stdout,stderr,args,norm_target,minlen,pre
                  descr="Quality-trim and length-filter reads",
                  stdout=stdout, stderr=stderr, args=locals())
 
-        trim_reads = _read_names("tr")
-        sort_reads(trim_uns_reads,trim_reads,threads=threads,stdout=stdout,stderr=stderr,base="trim_srt")
+        trim_reads = sort_reads_cond(trim_uns_reads,"tr","trim_srt")
 
         read_correction = args.get("read_correction","ext")
         if not read_correction in ("ext","spades","none"):
@@ -166,8 +174,8 @@ def asm_iter(inp_reads,workdir,threads,stdout,stderr,args,norm_target,minlen,pre
                      step_dir="ecorr",stderr=stderr, 
                      descr="Error-correct reads",
                      stdout=stdout, args=locals())
-            ecorr_reads = _read_names("ec")
-            sort_reads(ecorr_uns_reads, ecorr_reads, threads=threads, stdout=stdout, stderr=stderr, base="ec_srt")
+            ecorr_reads = sort_reads_cond(ecorr_uns_reads,"ec","ec_srt")
+
         else:
             ecorr_reads = trim_reads
         
@@ -185,9 +193,7 @@ def asm_iter(inp_reads,workdir,threads,stdout,stderr,args,norm_target,minlen,pre
                      step_dir="norm",
                      descr="Digitally normalize depth of coverage",
                      stdout=stdout, args=locals())
-            norm_reads = _read_names("nr")
-            sort_reads(norm_uns_reads, norm_reads, threads=threads, stdout=stdout, stderr=stderr, base="norm_srt")
-
+            norm_reads = sort_reads_cond(norm_uns_reads,"nr","norm_srt")
         else:
             norm_reads = ecorr_reads
 
@@ -200,11 +206,15 @@ def asm_iter(inp_reads,workdir,threads,stdout,stderr,args,norm_target,minlen,pre
                  descr="Merge overlapping paired end reads",
                  stdout=stdout, stderr=stderr, args=locals())
 
-        unmerged_reads = _read_names("um")
-        merged_reads = _read_names("m", n=1)
-        sort_reads([merged_uns_reads], [merged_reads], threads=threads, stdout=stdout, stderr=stderr, base="merge_srt")
-        sort_reads(unmerged_uns_reads, unmerged_reads, threads=threads, stdout=stdout, stderr=stderr, base="merge_un_srt")
-
+        if deterministic:
+            unmerged_reads = _read_names("um")
+            merged_reads = _read_names("m", n=1)
+            sort_reads([merged_uns_reads], [merged_reads], threads=threads, stdout=stdout, stderr=stderr, base="merge_srt")
+            sort_reads(unmerged_uns_reads, unmerged_reads, threads=threads, stdout=stdout, stderr=stderr, base="merge_un_srt")
+        else:
+            unmerged_reads = unmerged_uns_reads
+            merged_reads = merged_uns_reads
+        
         spades_mode = args.get("spades_mode", "sc")
         spades_out_seq_base = "contigs.fasta"
         spades_opt = ""
