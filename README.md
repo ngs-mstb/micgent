@@ -62,6 +62,7 @@ Journal of Clinical Microbiology Oct 2020, JCM.01828-20; [https://doi.org/10.112
 
 Kurasawa, James H., Andrew Park, Carrie R. Sowers, Rebecca A. Halpin, Andrey Tovchigrechko, Claire L. Dobson, Albert E. Schmelzer, Changshou Gao, Susan D. Wilson, and Yasuhiro Ikeda. "Chemically-Defined, High-Density Insect Cell-Based Expression System for Scalable AAV Vector Production." Molecular Therapy-Methods & Clinical Development (2020) [https://doi.org/10.1016/j.omtm.2020.09.018](https://doi.org/10.1016/j.omtm.2020.09.018)
 
+David E. Tabor, Christine Tkaczyk, Andrey Tovchigrechko, Bret R. Sellman, Michael McCarthy, Pin Ren, Kathryn Shoemaker, Hasan S. Jafri, Bruno François, Mark T. Esser, Jasmine Coppens, Leen Timbermont, Basil Xavier, Christine Lammens, Herman Goossens, Surbhi Malhotra-Kumar, Alexey Ruzin, 1486. Phylogenetic and alpha toxin variant analyses of Staphylococcus aureus strains isolated from patients during the SAATELLITE study, Open Forum Infectious Diseases, Volume 7, Issue Supplement_1, Oct 2020, Pages S744–S745, [https://doi.org/10.1093/ofid/ofaa439.1667](https://doi.org/10.1093/ofid/ofaa439.1667)
 
 ## How to run - the overview
 
